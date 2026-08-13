@@ -10,7 +10,6 @@
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <script src="./image-slot.js"></script>
   <style>
     body { margin: 0; background: #FFFFFF; }
     a { color: inherit; text-decoration: none; }
@@ -156,7 +155,7 @@
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="10">
           <div data-reveal="" data-group="" style="cursor:default">
             <div style="position:relative;aspect-ratio:3/4.2;background:#F2F1EE;overflow:hidden">
-              <image-slot data-hover-style="filter:grayscale(0) contrast(1) brightness(1)" id="projet-{{ p.slug }}" shape="rect" placeholder="photo" style="position:absolute;inset:0;filter:grayscale(1) contrast(1.06) brightness(1.02);transition:filter 620ms cubic-bezier(.22,.61,.36,1)"></image-slot>
+              <img src="{{ p.photo }}" alt="{{ p.titre }}" loading="lazy" data-hover-style="filter:grayscale(0) contrast(1) brightness(1)" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.06) brightness(1.02);transition:filter 620ms cubic-bezier(.22,.61,.36,1)">
             </div>
             <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:16px">
               <span style="font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:0.04em;color:#111111">{{ p.numero }}</span>
@@ -214,12 +213,7 @@
         
         
         
-        <sc-if value="{{ currentProject.photoGradee }}">
-        <image-slot id="proj-{{ currentProject.slug }}-d" shape="rect" placeholder="photo" style="grid-column: 2 / 4"></image-slot>
-        </sc-if>
-        <sc-if value="{{ currentProject.photoBrute }}">
-        <image-slot id="proj-{{ currentProject.slug }}-d" shape="rect" placeholder="photo" style="grid-column: 2 / 4"></image-slot>
-        </sc-if>
+        <img src="{{ currentProject.photo }}" alt="{{ currentProject.titre }}" style="grid-column:2 / 4;width:100%;height:100%;object-fit:cover;display:block">
       </div>
       </sc-if>
 
@@ -576,6 +570,7 @@ class Component extends DCLogic {
       titre: p.titre, categorie: p.categorie, annees: p.annees, index: i, slug: p.slug,
       numero: String(i + 1).padStart(2, '0'),
       legende: (p.categorie || '').trim().replace(/\s*\n+\s*/g, ' ') + ', ' + (p.annees || '').trim(),
+      photo: 'public/images/projets/projet-' + p.slug + '.webp',
       onClick: () => this.go('fiche', i),
     }));
 
@@ -600,7 +595,9 @@ class Component extends DCLogic {
         const oR = numbered(cp.outilsRecolter, 1);
         const oT = numbered(cp.outilsTraduire, oR.length + 1);
         const oX = numbered(cp.outilsTransmettre, oR.length + oT.length + 1);
+        const detailFile = { veolia: 'proj-veolia-a' }[cp.slug] || 'proj-' + cp.slug + '-d';
         return { ...cp, index: projectIndex, sousTitre: cp.annees + ' · ' + cp.categorie,
+          photo: 'public/images/projets/' + detailFile + '.webp',
           hasLien: !!cp.lien, hasFichier: !!cp.fichier,
           outilsRecolter: oR, outilsTraduire: oT, outilsTransmettre: oX,
           hasOutilsRecolter: oR.length > 0, hasOutilsTraduire: oT.length > 0, hasOutilsTransmettre: oX.length > 0,
