@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #FFFFFF; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #555555; }
+    ::selection { background: #111111; color: #FFFFFF; }
+    html, body { overflow-x: hidden; }
+    img, video, svg { max-width: 100%; }
+
+    @media (max-width: 768px) {
+      #ormaPage { font-size: 17px; }
+      #ormaPage h1 { font-size: 30px !important; margin-bottom: 34px !important; }
+      #ormaPage h2 { font-size: 22px !important; }
+      #ormaPage h3 { font-size: 19px !important; }
+
+      [data-m="bar"] { padding: 18px 20px 12px !important; align-items: center; gap: 10px !important; }
+      [data-m="bar"] > div:first-child { width: auto !important; }
+      [data-m="bar"] svg { width: 88px !important; }
+      [data-m="tag"] { white-space: nowrap !important; font-size: 8.5px !important; }
+      [data-m="fpad"] [data-m="tag"] { font-size: 10px !important; }
+      [data-m="nav"] { flex: 0 0 100% !important; max-width: none !important;
+        margin: 2px 0 0 !important; justify-content: space-between !important; font-size: 17px !important; }
+      [data-rail] { display: none !important; }
+
+      [data-m="pad"] { padding-left: 20px !important; padding-right: 20px !important;
+        padding-top: 28px !important; padding-bottom: 72px !important; }
+      [data-m="indent"] { margin-left: 0 !important; max-width: 100% !important; }
+      [data-m="indent"] + [data-m="indent"], [data-m="indent"] ~ [data-m="indent"] { padding-top: 56px !important; }
+
+      [data-m="herobar"] { padding: 18px 20px !important; }
+      [data-m="herobar"] > div { width: auto !important; }
+      [data-m="herobar"] svg { width: 88px !important; }
+      [data-m="herotext"] { padding: 40px 20px 48px !important; }
+      [data-m="herotext"] h1 { font-size: clamp(27px, 8.4vw, 40px) !important; }
+      [data-m="homevideo"] { aspect-ratio: 4 / 5 !important; }
+      [data-m="hometext"] { padding: 30px 0 40px !important; }
+      [data-m="hometext"] h1 { font-size: clamp(34px, 10.8vw, 54px) !important; line-height: 1.1 !important; }
+
+      [data-m="pgrid"] { grid-template-columns: 1fr 1fr !important; gap: 32px 14px !important; }
+      [data-m="pimg"] { max-width: 100% !important; }
+      [data-m="pleg"] { display: none !important; }
+      [data-m="pgrid"] h3 { font-size: 10px !important; letter-spacing: 0.05em !important; }
+      [data-m="pgrid"] h3 + span, [data-m="pgrid"] > div span:first-child { font-size: 10px !important; }
+      [data-m="reldef"] { grid-column: 1 / -1 !important; }
+      [data-m="reldef"] { grid-column: 1 / -1 !important; padding-left: 0 !important; padding-top: 12px; }
+      [data-m="reldef"] p:nth-of-type(2) { font-size: 34px !important; }
+
+      [data-m="g3"], [data-m="g2"] { grid-template-columns: 1fr !important; gap: 40px !important; }
+      [data-m="pstat"] { max-width: 100% !important; }
+      [data-m="c2"] { column-count: 1 !important; margin-top: 28px !important; max-width: 100% !important; }
+
+      [data-m="fphoto"] { height: auto !important; margin-bottom: 40px !important; }
+      [data-m="fphoto"] img { height: auto !important; aspect-ratio: 3 / 2; }
+
+      [data-m="fpad"] { padding: 22px 20px 26px !important; margin-top: 8px !important; border-color: #dddddd !important; }
+      [data-m="fpad"] svg { width: 64px !important; margin-bottom: 10px !important; }
+      [data-m="fpad"] [data-m="tag"] { margin-bottom: 12px !important; color: #A0A0A0 !important; }
+      [data-m="fpad"] nav { flex-wrap: wrap; gap: 14px 20px !important; font-size: 13px !important; margin-bottom: 10px !important; color: #8A8A8A; }
+      [data-m="fpad"] > p:last-child { font-size: 11px !important; color: #B0B0B0 !important; }
+
+      #ormaPage [style*="text-align:justify"], #ormaPage [style*="text-align: justify"] { text-align: left !important; }
+      #ormaPage [style*="font-size: 32px"], #ormaPage [style*="font-size: 28px"] { font-size: 22px !important; }
+      #ormaPage [style*="font-size: 25px"] { font-size: 20px !important; }
+      #ormaPage [style*="font-size:21px"], #ormaPage [style*="font-size: 21px"] { font-size: 18px !important; }
+      #ormaPage [style*="font-size:20px"] { font-size: 18px !important; }
+      #ormaPage [style*="font-size: 19px"] { font-size: 17px !important; }
+      #ormaPage a[download], #ormaPage a[target="_blank"] { min-height: 44px; box-sizing: border-box; }
+    }
+  </style>
+</helmet>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="ormaGlyph" d="M1527 655c4.46 3.37 6.9 5.67 9 11 .47 3.91.49 7.81.51 11.74l.06 3.41c.05 3.57.08 7.15.12 10.73.03 2.42.07 4.85.1 7.28.09 5.95.15 11.89.21 17.84l2 3c6.52 0 7.6-1.21 12.31-4.81.6-.45 1.19-.91 1.81-1.37 2.78-2.14 5.5-4.23 7.88-6.82h2c.25-.56.49-1.11.75-1.69 3.05-5.65 7.03-8.81 12.31-12.19.67-.43 1.33-.86 2.02-1.3 1.35-.87 2.69-1.74 4.04-2.6 1.66-1.08 3.29-2.19 4.92-3.32 5.3-3.6 9.93-5.72 16.16-7.17 3-.78 5.7-1.87 8.55-3.11 18.24-7.73 39.24-13.48 59.25-11.62.71.06 1.43.11 2.16.17 12.09 1.01 21.7 4.07 32.43 9.64 3.89 2.01 7.66 3.31 11.85 4.57 7.87 2.6 12.94 7.75 18.56 13.62v2l3 1c4.09 5.78 6.52 11.61 8.77 18.28 1.48 4.24 3.16 7.32 6.23 10.72 11.43 0 15.87-5.48 24-13h2v-2c.51-.41.51-.41 3.06-2.5 2.69-2.28 4.92-4.63 7.13-7.38 4.45-5.22 10.03-8.53 15.81-12.12.81-.55 1.63-1.1 2.47-1.66 5.99-3.9 12.25-6.08 19.01-8.19 2.78-.91 5.28-1.88 7.9-3.15 24.63-11.38 53.6-12.97 79.62-6 5.04 1.86 9.61 4.44 14.26 7.1 2.69 1.39 5.54 2.23 8.43 3.15 9.38 3.45 18.5 11.7 23.35 20.51 1.78 4.13 3.2 8.4 4.64 12.66 1.25 3.38 2.7 6.46 4.38 9.64 13.15 25.87 10.38 57.56 10.35 85.79 0 5.26.01 10.51.03 15.77.04 14.45.05 28.89.06 43.33.01 13.29.03 26.57.07 39.85.02 6.23.02 12.45.02 18.68-.01 3.88.01 7.76.02 11.64v5.35c-.04 8.72.24 17.22 1.68 25.85.11.68.22 1.37.34 2.08 1.18 6.3 4.15 10.89 8.37 15.6.62.22 1.24.43 1.88.66 2.85 1 5.71 2.01 8.56 3.03.48.17.48.17 2.95 1.03 16.84 6.02 16.84 6.02 21.61 13.28 1 9 1 9-4 16-11.1 4.52-22.52 3.08-34.27 2.34-2.32-.13-4.63-.27-6.94-.41-3.57-.21-7.13-.43-10.7-.65-22.64-1.39-45-1.55-67.65-.48-2.97.14-5.93.27-8.89.4-9.48.43-18.94.94-28.4 1.6-4.22.27-8.42.42-12.65.45l-2.22.06c-6.48.05-10.85-1.69-16.28-5.31-1.05-3.15-1.1-5.39-1.06-8.69.01-.99.02-1.99.02-3.01.06-3.33 1.86-4.99 3.97-7.43 5.07-4.59 11.99-6.32 18.45-8.11.76-.21 1.51-.42 2.29-.64 1.48-.4 2.96-.79 4.45-1.16 4.99-1.32 7.53-3.02 10.88-6.96.65-2.5 1.3-5 1.94-7.5.18-.7.36-1.39.55-2.11l.54-2.11c.16-.63.32-1.26.49-1.9 1.21-5.99 1.61-11.86 1.61-17.96.01-.71.01-1.43.01-2.17.01-2.39.01-4.77.01-7.16 0-1.71 0-3.43.01-5.15 0-4.66.01-9.31.01-13.96v-8.73c.01-10.17.02-20.33.02-30.5-.01-9.46.01-18.92.02-28.38.01-8.13.02-16.27.02-24.4 0-4.86 0-9.71.01-14.56.01-4.57.01-9.13 0-13.7 0-1.67.01-3.34.01-5.01.03-8.45-.16-16.46-2.25-24.7q-.495-2.46-.96-4.92c-.33-1.61-.65-3.22-.98-4.83-.15-.81-.31-1.62-.47-2.46-.96-4.7-2.29-8.52-4.59-12.79v-2l-3-1a139 139 0 0 1-5-5v-2c-.72-.27-1.44-.54-2.19-.81-2.81-1.19-2.81-1.19-5.12-2.63-15.18-8.82-38.47-7.87-55-3.56-3.36 1.25-6.25 2.8-9.14 4.91C1788 735 1788 735 1785 736v2c-.51.35-1.02.7-1.54 1.07-11.72 8.41-19.89 20.88-23.46 34.93-1.25 8.51-1.15 17.01-1.15 25.59 0 1.67 0 3.34-.01 5.02 0 4.52-.01 9.05-.01 13.57v8.5c-.01 9.91-.02 19.81-.02 29.72.01 9.2-.01 18.4-.02 27.6-.01 7.93-.02 15.85-.02 23.78 0 4.72 0 9.44-.01 14.16-.01 4.45-.01 8.89 0 13.34 0 1.62-.01 3.24-.01 4.86-.12 32.46-.12 32.46 9.4 43.22 3.26 2.89 7.05 3.98 11.16 5.26 1.7.58 3.4 1.17 5.09 1.76.8.27 1.6.55 2.43.84 7.04 2.54 11.8 5.72 16.17 11.78 1.05 9.48 1.05 9.48-1.63 13.4-2.64 3.08-5.52 4.46-9.37 5.6-8.41.54-16.92-.13-25.32-.66-2.32-.13-4.64-.27-6.96-.41-1.19-.07-2.38-.14-3.61-.21-20.06-1.19-40.01-2.3-60.11-1.72-1.07.03-2.15.05-3.25.08-13.15.33-26.25 1.06-39.37 1.98-17.08 1.18-17.08 1.18-24.32 1.32-1.22.02-2.45.05-3.71.08-4.29-.59-6.73-2.12-10.35-4.46-2.14-3.48-2.21-6.21-2.12-10.25.01-1.08.03-2.16.05-3.27.11-3.77 2.49-5.93 5.07-8.48 5.9-3.88 12.74-5.51 19.5-7.25 1.01-.27 2.03-.54 3.07-.81 2.47-.66 4.95-1.3 7.43-1.94 7.13-7.86 8.02-16.52 8.57-26.94l.12-2.24c.4-7.65.45-15.29.44-22.95v-4.59c.01-4.09.01-8.19 0-12.28 0-4.33 0-8.65.01-12.97 0-7.26 0-14.52-.01-21.77-.01-8.34 0-16.68 0-25.02.01-7.21.01-14.42 0-21.64 0-4.28 0-8.57.01-12.85.03-47.11.03-47.11-2.76-59.81-.09-.4-.09-.4-.52-2.38-1.59-6.62-4.23-11.53-8.86-16.56-.52-.63-1.05-1.26-1.59-1.9-8.11-9.05-19.82-14.43-31.85-15.37-3.71-.1-7.41-.09-11.12-.04-1.25-.01-2.5-.01-3.79-.01-18.69.11-29.58 5.46-42.65 18.32-.87.83-1.74 1.67-2.64 2.53-15.17 15.88-15.52 34.64-15.49 55.24v4.93c-.01 4.43-.01 8.86 0 13.28 0 4.66 0 9.32-.01 13.98 0 7.82 0 15.64.01 23.46.01 9 0 18.01 0 27.02-.01 7.77-.01 15.54 0 23.3 0 4.63 0 9.25-.01 13.88 0 4.35 0 8.7.01 13.05v4.76c-.04 32.85-.04 32.85 10.13 44.57.56.18 1.12.36 1.69.55 25.04 8.18 25.04 8.18 31.31 17.45 1 8 1 8-4 16-10.12 4.67-20.9 3.05-31.77 2.34-2.23-.13-4.46-.27-6.69-.41-3.44-.21-6.88-.43-10.32-.65-15.1-.96-30.09-1.52-45.22-1.28l-2.3.03c-4.88.08-9.76.2-14.64.35l-2.21.06c-12.07.34-24.09 1.04-36.13 1.89-28.76 1.98-28.76 1.98-36.72-3.33-2.65-5.76-1.8-10.91-1-17 6.48-9.51 17.34-10.75 27.96-13.16 7.24-1.7 11.47-3.47 15.89-9.81 1.93-3.42 2.44-6.86 2.94-10.72.12-.83.23-1.65.35-2.51 1.21-9.24 1.28-18.46 1.25-27.77 0-1.92.01-3.83.01-5.75.02-5.14.01-10.28 0-15.43 0-5.41 0-10.83.01-16.25 0-9.09 0-18.18-.02-27.27-.02-10.46-.01-20.93.01-31.4.01-9.03.01-18.07 0-27.1 0-5.38 0-10.75.01-16.13.01-5.05 0-10.11-.02-15.16 0-1.84 0-3.69.01-5.53.03-8.87-.22-17.54-1.67-26.3-.11-.68-.22-1.36-.33-2.05-1.38-7.33-4.97-13.22-10.63-18.02-6.01-3.56-13.04-4.98-19.77-6.64-4-5-4-5-5-14 6.19-9.91 12.21-11.9 22.75-15.38 6.83-2.31 13.21-4.92 19.61-8.28 6.83-3.47 13.68-5.43 21.2-6.84 9.44-1.78 17.24-5.32 25.75-9.65 4.8-2.43 9.65-4.73 14.5-7.04.45-.21.45-.21 2.72-1.29 2.48-1.19 4.97-2.36 7.47-3.52l2.05-.96c4.18-1.89 7.36-2.32 11.95-2.04m805.422 38.754c2.65 2.31 5.12 4.73 7.58 7.25v2h2c14.47 21.74 19.14 38.45 19.16 64.46 0 1.73.01 3.46.01 5.19l.03 11.12c.01 5.87.03 11.75.05 17.62.06 16.7.12 33.39.15 50.08.02 9.24.05 18.48.09 27.71.02 4.88.03 9.76.04 14.63 0 4.59.01 9.18.04 13.77.01 1.67.01 3.34.01 5.02-.04 23.96 7.08 41.53 23.95 59.02 2.24 2.15 4.48 4.29 6.78 6.38.7.64 1.4 1.27 2.11 1.93 6.35 5.09 12.83 8.18 20.52 10.75.84.3 1.68.59 2.55.9 24.87 8.51 48.69 4.78 73.19-2.6 3.07-.91 6.16-1.73 9.26-2.53 4.46-1.2 8.23-2.79 12.31-4.95 6.74-3.54 13.58-6.48 20.69-9.19 1.14-.44 2.28-.88 3.46-1.33 2.6-.98 2.6-.98 8.6.02 4 4 4 4 4 9-5.01 4.84-10.06 8.27-16.24 11.48-2.62 1.44-4.97 3.01-7.39 4.77-4.42 3.19-9.02 5.91-13.75 8.62-5.29 3.04-10.24 6.2-15.06 9.94-4.95 3.83-9.84 6.68-15.56 9.19-.95.43-1.89.86-2.87 1.3-9.63 4.23-19.39 6.55-29.76 8.17-2.37.53-2.37.53-4.18 1.52-7.39 3.39-17.09 2.19-25 2.19-1.31.02-2.61.03-3.95.04-7.68.01-14.75-.59-22.24-2.22-1.69-.32-3.38-.63-5.06-.93-22.52-4.26-22.52-4.26-28.16-8.9-3.67-2.87-7.64-4.82-11.78-6.92-9.84-5.09-19.24-10.56-28.31-16.94-.41-.29-.41-.29-2.46-1.72-1.36-.97-2.71-1.97-4.03-3-14.2-10.31-38.16-10.17-54.64-7.59-12.55 2.25-22.83 8.32-32.65 16.21-24.02 19.09-53.81 25.92-83.91 22.79-7.27-1.45-13.58-4.41-20-8-1.15-.58-2.3-1.15-3.48-1.74-11.3-6-19.37-13.67-24.97-25.19-1.38-2.74-2.88-4.96-4.74-7.39-7.8-11.53-8.82-28.66-6.38-42.04 1.74-7.66 4.23-14.96 8.39-21.67 1.27-2.12 2.18-4.25 3.12-6.54 4.45-9.95 9.91-13.91 19.5-18.57 3.22-1.6 5.76-3.6 8.56-5.86 2.72-1.73 5.51-3.34 8.31-4.94 1.46-.84 2.91-1.69 4.36-2.53.72-.42 1.44-.83 2.18-1.26 2.12-1.25 4.18-2.56 6.25-3.89 3.53-2.22 7.12-3.94 10.96-5.57 1.39-.59 2.77-1.19 4.16-1.78.37-.16.37-.16 2.28-.97 4.86-2.07 9.71-4.2 14.56-6.31 2.83-1.24 5.67-2.47 8.5-3.69 2.01-.88 4-1.79 5.99-2.72 4.42-1.73 8.88-2.66 13.51-3.66 8.88-2.01 16.74-4.66 24.94-8.68 1.14-.56 2.29-1.12 3.47-1.7 2.34-1.15 4.67-2.32 7-3.51 2.43-1.23 4.85-2.44 7.31-3.62l1.89-.91c1.72-.84 3.45-1.66 5.17-2.49 5.36-3.01 9.27-6.23 12.16-11.77 2.05-7.71 2.3-15.62 2.26-23.55 0-.53 0-.53.01-3.2 0-2.21 0-4.43-.01-6.64-.01-3.34 0-6.68.01-10.02.03-38.1.03-38.1-9.06-48.68-1.98-1.81-4.01-3.37-6.21-4.91-.69-.52-1.38-1.05-2.1-1.58-2.24-1.61-4.52-3.03-6.9-4.42-.8-.49-1.61-.98-2.43-1.49-10.73-5.53-25.32-5.45-36.92-2.59-9.16 3.02-15.09 6.66-19.53 15.26-2.02 4.36-3.23 8.06-3.52 12.86-.07.99-.13 1.98-.21 3-.13 2.08-.26 4.15-.38 6.22-.52 7.19-1.53 13.5-7 18.59-.67.38-1.33.76-2.01 1.15-.33.2-.33.2-2.01 1.21-2.32 1.27-4.65 2.54-6.99 3.79-.38.2-.38.2-2.28 1.22-12.12 6.28-24.5 10.57-37.72 13.78-.66.19-1.32.39-2.01.6-2.92.58-5.76.49-8.74.46l-3.55-.03c-3.85-.05-5.61-1.79-8.7-4.03-4.01-5.39-4.2-10.45-4-17 3.31-18.86 13.83-31.41 29.33-42.33 3.09-1.94 6.2-3.33 9.57-4.69 2.25-1.05 3.97-2.31 5.91-3.86 4.14-3.28 8.62-5.46 13.36-7.75 2.26-1.1 4.42-2.23 6.58-3.5 2.31-1.33 4.58-2.57 6.97-3.75.7-.35 1.4-.7 2.13-1.06.35-.17.35-.17 2.15-1.06 1.28-.65 2.57-1.29 3.86-1.93 2-1 4-2.01 6-3 3.07-1.53 6.13-3.07 9.17-4.64 42.4-21.83 103.05-31.95 142.39.32m-141.23 192.06c-3.41 3.03-5.48 6.65-7.64 10.62-1.55 2.57-1.55 2.57-4.06 5.38-2.9 3.41-4.12 6.91-5.3 11.19l-.64 2.25c-3.25 12.36-2.34 22.5 4.06 33.52 1.73 2.8 3.53 5.52 5.39 8.23.51.77 1.01 1.54 1.54 2.33 3.16 4.56 6.32 7.42 11.46 9.67.36.18.36.18 2.19 1.12 9.84 4.43 22.05 4.52 32.45 1.99 10.58-4.09 18.33-11.41 25.36-20.11.56-.66 1.11-1.31 1.69-1.98 9.73-12.63 8.97-30.65 8.88-45.75-.01-3.3.03-6.59.06-9.9v-6.37c.01-.98.02-1.95.04-2.95-.09-6.68-1.52-11.73-5.67-17.05-19.08-16-54.02 5.8-69.81 17.81M1191 654l7 6c.36 7.86-.22 15.07-1.79 22.78-2.19 10.88-3.22 21.9-3.96 32.97-.06.75-.11 1.5-.17 2.27-.24 4.18 0 7.23 1.92 10.98 6.53-.28 11.15-2.61 16-7 1.41-2.12 2.5-4.25 3.61-6.54 2.68-4.74 6.64-8.55 10.39-12.46h2l.78-1.8c1.34-2.41 2.67-3.69 4.78-5.45 3.79-3.19 7.44-6.49 11.07-9.86 2.93-2.34 6.09-4.11 9.37-5.89.29-.16.29-.16 1.76-.98 20.95-11.74 42.13-18.67 66.09-12.68 6.43 1.98 12.33 5.37 18.15 8.66.93.52 1.86 1.04 2.82 1.57 3.6 2.36 5.72 5.61 6.78 9.78.74 4.9.58 9.83.59 14.77l.03 3.27c.03 16.63-4.3 27.85-15.97 39.73-1.39 1.33-2.81 2.62-4.25 3.88-.39.35-.39.35-2.38 2.1-5.52 4-13.26 6.42-20.12 5.96-7.76-1.43-15.02-5.01-22.24-8.06l-2.51-1.06c-1.62-.69-3.24-1.39-4.86-2.08a147 147 0 0 0-13.93-5.18c-1.96-.68-1.96-.68-5.21-2.37-10.02-3.51-20.17-1.18-29.75 2.69-2.5 1.26-4.91 2.58-7.29 4.05-1.71.95-1.71.95-3.71.95l-.7 1.55c-1.79 3.37-3.92 6.48-6.05 9.64-.45.67-.89 1.34-1.36 2.03-1.89 2.83-3.79 5.64-5.78 8.41-9.14 12.86-9.41 28.96-9.38 44.21-.01 1.56-.01 3.12-.02 4.67-.01 4.2-.01 8.39-.01 12.59 0 3.51-.01 7.03-.01 10.55-.01 8.3-.01 16.6-.01 24.9.01 8.53 0 17.07-.02 25.6-.02 7.36-.03 14.71-.02 22.07 0 4.38 0 8.76-.02 13.14q-.015 6.18 0 12.36c.01 1.51 0 3.01 0 4.51-.07 13.31.74 27.53 10.24 37.77 7.42 6.89 15.11 8.56 24.83 10.38 22 4.35 22 4.35 28.31 11.62 1 3.01 1.1 5.04 1.06 8.19-.01.9-.02 1.8-.02 2.73-.04 2.08-.04 2.08-3.04 7.08-11.74 7.55-32.48 3.02-45.87 2.14-18.24-1.19-36.42-1.45-54.69-1.4-4.06.01-8.12 0-12.18-.01-19.87-.05-39.62.55-59.45 1.81-28.86 1.81-28.86 1.81-39.81-2.54-2.77-3.98-3.84-7.14-4-12 1.08-4.49 2.5-7.92 6-11 1.81-.83 1.81-.83 3.85-1.46.38-.13.38-.13 2.31-.73.81-.25 1.63-.49 2.46-.75.84-.26 1.68-.51 2.54-.78 8.19-2.48 16.48-4.46 24.84-6.28.27-.91.54-1.82.81-2.75 1.11-3.02 2.24-4.76 4.19-7.25 1.13-2.3 1.13-2.3 2.12-4.75.34-.8.67-1.6 1.01-2.42 1.94-6.31 2.02-12.82 2-19.36 0-.41 0-.41.01-2.49.01-2.73.01-5.46.01-8.2 0-1.96 0-3.93.01-5.9 0-5.33.01-10.65.01-15.98v-10c.01-11.63.02-23.26.02-34.89-.01-10.83.01-21.66.02-32.49.01-9.31.02-18.61.02-27.92 0-5.56 0-11.11.01-16.67.01-5.22.01-10.45 0-15.67 0-1.92.01-3.83.01-5.74.01-2.62 0-5.24 0-7.86 0-.75.01-1.5.01-2.27-.08-12.9-4.91-23.03-12.26-33.39-5.84-2.72-11.77-4.41-18-6-5.26-9.47-5.26-9.47-4-16 4.12-7.94 10.65-9.24 18.65-11.83 4.76-1.66 9.34-3.7 13.96-5.72 4.73-2.02 9.53-3.77 14.39-5.45.69-.24 1.37-.48 2.08-.73 5.05-1.74 10.17-3.26 15.3-4.77l2.07-.61c3.02-.88 6.03-1.76 9.08-2.55 7.37-1.91 14.43-4.42 21.53-7.15 1.11-.42 2.22-.83 3.36-1.25 6.17-2.37 11.8-5.02 17.38-8.58 5.48-3.39 10.62-6.04 17.2-5.36m-378.297-34.633c2.64.51 5.25.94 7.91 1.33 8.34 1.23 16.4 2.49 24.39 5.3.67.22 1.34.43 2.03.65 4.29 1.37 8.49 2.93 12.69 4.55.69.27 1.38.53 2.09.8.69.27 1.39.54 2.11.82 4.04 1.52 7.96 2.68 12.2 3.56 11.62 2.68 22.86 10.55 31.16 18.93 3.23 3.21 6.64 6.16 10.09 9.13.64.55 1.27 1.09 1.92 1.66l3.82 3.28c1.26 1.08 2.51 2.17 3.76 3.27 3.11 2.71 6.11 5.09 9.69 7.17 7.75 5.08 10.94 13.11 14.87 21.21 1.97 3.73 4.3 7.06 6.78 10.47 2.52 3.52 4.8 7.18 7.1 10.85 1.54 2.43 3.16 4.79 4.81 7.15 5.24 7.85 8.35 16.56 11.42 25.43 1.08 3.08 2.26 6.11 3.48 9.14 6.81 17 6.81 17 7.63 26.11.25 2.7.52 5.39.83 8.09 1.45 12.74 1.89 25.35 1.83 38.17 0 1-.01 2.01-.01 3.04-.04 6.85-.14 13.68-.3 20.52l-.06 2.28c-.67 24.82-8.27 49.37-18.94 71.72-.42.91-.84 1.82-1.28 2.75-.36.75-.72 1.49-1.1 2.25-.36.75-.71 1.49-1.08 2.25-1.81 3.23-3.86 6.25-5.93 9.32-2.63 3.96-5.06 8.04-7.49 12.12-.26.43-.26.43-1.58 2.63-2.34 3.91-4.65 7.83-6.82 11.85-3.28 6.07-6.29 10.99-11.79 15.27-2.73 2.21-4.86 4.82-7.12 7.5-3.09 3.53-6.46 6.79-9.81 10.06h-2c-.11.29-.11.29-.67 1.73-1.75 2.98-3.93 4.59-6.65 6.71-2.93 2.3-5.67 4.55-8.3 7.22-2.1 2.06-3.62 3.25-6.26 4.47-.31.14-.31.14-1.87.88-1.84.81-3.7 1.59-5.56 2.36-3.81 1.63-7.36 3.62-10.94 5.7-1.41.8-2.83 1.59-4.24 2.39-.74.41-1.47.83-2.23 1.26-.75.42-1.51.85-2.28 1.28-.39.22-.39.22-2.32 1.32-10.19 5.73-19.97 10.4-31.37 13.12-2.48.6-4.94 1.29-7.4 1.97-16.34 4.27-32.16 4.13-48.91 3.59l-3-2 2-5c4.19-1.59 8.38-3.14 12.62-4.61 9.64-3.38 17.85-6.69 25.7-13.36 5.41-4.54 10.25-7.24 16.84-9.74 4.36-1.97 7.51-4.91 10.84-8.29l1.71-1.71c.43-.42.85-.85 1.29-1.29h2c.26-.58.53-1.16.8-1.75 1.25-2.34 2.67-4.11 4.38-6.12 3.05-3.82 5.25-7.79 7.32-12.19 2.34-4.97 4.9-8.94 8.71-12.91 6.43-7.31 10.28-16.89 14.41-25.59.28-.58.28-.58 1.7-3.54 8.79-18.4 8.79-18.4 11.24-26.9.21-.73.42-1.45.64-2.2 3.38-12.1 5.04-24.35 6.06-36.85.32-3.71.76-7.05 1.73-10.66 3.43-13.12 2.16-27.79 2.14-41.22-.01-3.56 0-7.12 0-10.68.02-30.05.02-30.05-2.64-39.3-1.15-4.87-1.39-9.93-1.87-14.9-3.92-37.32-3.92-37.32-13.62-50.19-1.1-2.1-2.16-4.23-3.19-6.37-6.92-14.09-14.54-28.54-25.81-39.63a128 128 0 0 1-3.19-4.18c-12.34-15.99-33.82-33.82-54.06-38.07-8.85-2.09-17.27-5.51-25.75-8.75l-1-5c6.51-6.51 25.27-3.28 33.7-1.63M707 619c.66.5.66.5 4 3-1.17 5.83-1.49 5.69-6 9-4.49 2.38-9.02 4.04-13.94 5.31-5.92 1.72-10.22 4.96-15.06 8.69-1.1.81-2.2 1.62-3.31 2.43-5.32 3.95-10.4 7.81-14.51 13.07-1.18 1.5-1.18 1.5-3.56 3.81-3.87 3.97-7.21 8.33-10.62 12.69h-2c-1.51 3.73-2.95 7.49-4.38 11.25-1.76 4.6-3.63 9.11-5.66 13.59-6.33 14.16-9.64 26.95-9.48 42.42.02 2.44 0 4.87-.03 7.3-.01 8.98.82 16.15 4.55 24.44.55 1.54 1.09 3.09 1.61 4.64 5.86 17.11 12.17 34.01 19.96 50.34 8.06 16.96 7.86 33.84 2.66 51.67-1.85 5.09-4.52 9.57-7.35 14.16-13.94 22.62-25.77 47.85-19.63 74.88 2.37 7.87 5.86 14.57 10.2 21.52 1.72 3.1 2.92 6.23 4.17 9.54 5.9 14.17 16.73 24.16 30.76 29.97 5.85 2.86 11.21 6.68 16.62 10.28v2c3.64 1.49 7.31 2.81 11.04 4.06 1.13.38 2.27.77 3.45 1.17 2.38.81 4.77 1.61 7.16 2.4l3.45 1.18c1.03.35 2.07.7 3.14 1.05 2.65 1.09 4.57 2.31 6.76 4.14l-1 4c-15.33 7.67-45-.57-60-5-.39-.11-.39-.11-2.37-.66-7.82-2.2-14.68-5.22-21.59-9.52-3.31-1.98-6.7-3.7-10.16-5.38-5.01-2.46-9.78-5.1-14.51-8.05-2.46-1.44-4.97-2.63-7.56-3.83-4.93-2.42-8.22-5.45-11.81-9.56-.55-.62-1.1-1.24-1.67-1.88-1.16-1.31-2.31-2.64-3.45-3.97-1.31-1.5-2.65-2.97-4-4.42-5.22-5.6-9.6-11.41-13.84-17.75-2.04-2.98-2.04-2.98-4.18-5.63-11.97-15.11-11.35-38.27-9.86-56.35.93-6.25 2.71-12.12 5-18l1.27-3.33c1.54-3.81 3.2-7.54 4.94-11.26 11.25-25.05 16.14-57.45 6.57-83.76-.97-2.39-1.96-4.76-2.97-7.13-2.45-5.92-4.42-12.01-6.43-18.08-.38-1.11-.75-2.23-1.13-3.37-1.11-3.35-2.18-6.71-3.25-10.07-.38-1.12-.76-2.23-1.15-3.38-2.67-8.36-3.45-16.16-3.32-24.85.03-2.1.02-4.19.01-6.29.01-7.36.59-13.67 3.46-20.48.49-1.48.97-2.95 1.44-4.44q.765-2.28 1.56-4.56c.25-.75.5-1.49.76-2.26 5.04-13.8 13.09-26.4 25.24-34.74.16-.33.16-.33 1-2h2c.27-.57.53-1.14.8-1.73 12.19-23.13 39.94-33.55 63.2-41.27 1.15-.39 2.3-.78 3.49-1.19 2.83-.96 5.67-1.89 8.51-2.81 1.03-.34 2.06-.68 3.12-1.02 12.78-4.08 24.46-6.53 37.88-5.98"></path></defs></svg>
+
+<div id="ormaPage" style="background:#FFFFFF;color:#111111;min-height:100vh;font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.65">
+
+  <sc-if value="{{ showNav }}">
+  <header>
+    <div data-m="bar" style="max-width:1200px;margin:0 auto;padding:28px 40px 18px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px">
+      <div data-reveal="" style="cursor:pointer;width:150px" onClick="{{ goHome }}">
+        <svg viewBox="440 500 2220 620" role="img" aria-label="Orma" style="display:block;width:123px;height:auto;margin:0 auto"><use href="#ormaGlyph" fill="#161615"></use></svg>
+        <div style="margin-top:10px;text-align:center;font-family:'EB Garamond',serif;font-style:italic;font-size:13px;line-height:1.5;color:#333333">
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}"><span data-m="tag" style="display: block; font-size: 10px">{ récolter }&nbsp;&nbsp;( traduire )&nbsp;&nbsp;[ transmettre ]</span></sc-if>
+          <sc-if value="{{ isEN }}"><span data-m="tag" style="display: block; font-size: 10px">{ gather }&nbsp;&nbsp;( translate )&nbsp;&nbsp;[ pass on ]</span></sc-if>
+          
+          
+        </div>
+      </div>
+      <nav data-m="nav" data-reveal="" data-reveal-delay="140" style="flex:1;max-width:520px;margin-left:auto;margin-top:14px;display:flex;align-items:baseline;justify-content:space-between;font-family:'EB Garamond',serif;font-size:20px">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="4">
+          <span data-group="" style="cursor:pointer;white-space:nowrap;display:inline-flex;align-items:baseline;gap:5px;font-weight:{{ item.weight }}" onClick="{{ item.onClick }}"><span data-hover-style="opacity:1;transform:translateX(0)" style="font-style:italic;font-weight:400;opacity:{{ item.parenOpacity }};transform:translateX(4px);transition:opacity 320ms ease,transform 320ms cubic-bezier(.22,.61,.36,1)">{</span>{{ item.label }}<span data-hover-style="opacity:1;transform:translateX(0)" style="font-style:italic;font-weight:400;opacity:{{ item.parenOpacity }};transform:translateX(-4px);transition:opacity 320ms ease,transform 320ms cubic-bezier(.22,.61,.36,1)">}</span></span>
+        </sc-for>
+        <span data-m="langbtn" onClick="{{ toggleLang }}" title="Français / English" style="cursor:pointer;white-space:nowrap;display:inline-flex;align-items:baseline;gap:3px;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:0.1em">
+          <span style="opacity:{{ frOpacity }};transition:opacity 320ms ease">FR</span><span style="opacity:0.28">/</span><span style="opacity:{{ enOpacity }};transition:opacity 320ms ease">EN</span>
+        </span>
+      </nav>
+    </div>
+    <div style="border-top:1px solid #111111"></div>
+  </header>
+  </sc-if>
+
+  <sc-if value="{{ showChrome }}">
+  <div data-rail="" style="position:fixed;top:140px;bottom:70px;right:20px;width:1px;background:#e6e6e6;z-index:5;pointer-events:none">
+    <span data-rail-dot="" style="position:absolute;left:-3px;top:0;width:7px;height:7px;border-radius:50%;background:#111111"></span>
+  </div>
+  </sc-if>
+
+  <div style="opacity:{{ pageOpacity }};transform:{{ pageShift }};transition:opacity 0.4s ease,transform 0.4s ease">
+
+  <!-- HOME -->
+  <sc-if value="{{ isHero }}" hint-placeholder-val="{{ true }}">
+    <main onClick="{{ enterSite }}" title="Entrer" style="position:relative;height:100vh;width:100%;overflow:hidden;cursor:pointer;background:#111111">
+      <video src="public/videos/orma-accueil.mp4" poster="public/images/vivant-cage-oiseaux.jpg" autoplay="" muted="" loop="" playsinline="" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.28) 0%,rgba(0,0,0,0.10) 40%,rgba(0,0,0,0.48) 100%)"></div>
+      <div data-m="herobar" style="position:absolute;top:0;left:0;right:0;max-width:1200px;margin:0 auto;padding:28px 40px 18px;color:#FFFFFF">
+        <div style="width:150px">
+          <svg viewBox="440 500 2220 620" role="img" aria-label="Orma" style="display:block;width:123px;height:auto;margin:0 auto"><use href="#ormaGlyph" fill="#FFFFFF"></use></svg>
+          <div style="margin-top:10px;text-align:center;font-family:'EB Garamond',serif;font-style:italic;font-size:13px;line-height:1.5;color:#FFFFFF">
+            <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}"><span data-m="tag" style="display:block;font-size:10px">{ récolter }&nbsp;&nbsp;( traduire )&nbsp;&nbsp;[ transmettre ]</span></sc-if>
+            <sc-if value="{{ isEN }}"><span data-m="tag" style="display:block;font-size:10px">{ gather }&nbsp;&nbsp;( translate )&nbsp;&nbsp;[ pass on ]</span></sc-if>
+          </div>
+        </div>
+      </div>
+      <div data-m="herotext" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:56px 40px 64px;color:#FFFFFF">
+        <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+        <h1 style="font-family:'EB Garamond',serif;font-weight:500;font-size:clamp(38px,6vw,84px);line-height:1.15;margin:0;text-wrap:pretty">
+          Le monde n'est&nbsp;pas&nbsp;fait&nbsp;de&nbsp;lieux. <br>Il&nbsp;est&nbsp;fait&nbsp;de&nbsp;<em style="font-style:italic">relations</em>.
+        </h1>
+        </sc-if>
+        <sc-if value="{{ isEN }}">
+        <h1 style="font-family:'EB Garamond',serif;font-weight:500;font-size:clamp(38px,6vw,84px);line-height:1.15;margin:0;text-wrap:pretty">
+          The world is&nbsp;not&nbsp;made&nbsp;of&nbsp;places. <br>It&nbsp;is&nbsp;made&nbsp;of&nbsp;<em style="font-style:italic">relations</em>.
+        </h1>
+        </sc-if>
+      </div>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isHome }}">
+    <main>
+      <section data-m="pad" style="max-width:1200px;margin:0 auto;padding:56px 40px 0">
+        <div data-m="homevideo" data-reveal="" style="aspect-ratio:2.35/1;overflow:hidden">
+          <video src="public/videos/orma-accueil.mp4" poster="public/images/vivant-cage-oiseaux.jpg" autoplay="" muted="" loop="" playsinline="" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video>
+        </div>
+        <div data-m="hometext" style="padding:52px 0 100px;max-width:900px">
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+          <h1 data-reveal="" data-reveal-delay="160" style="font-family:'EB Garamond',serif;font-weight:500;font-size:clamp(38px,6vw,84px);line-height:1.15;margin:0">
+            Le monde n'est&nbsp;pas&nbsp;fait&nbsp;de&nbsp;lieux. <br>Il est fait de <em style="font-style:italic">relations</em>.
+          </h1>
+          </sc-if>
+          <sc-if value="{{ isEN }}">
+          <h1 data-reveal="" data-reveal-delay="160" style="font-family:'EB Garamond',serif;font-weight:500;font-size:clamp(38px,6vw,84px);line-height:1.15;margin:0">
+            The world is&nbsp;not&nbsp;made&nbsp;of&nbsp;places. <br>It is made of <em style="font-style:italic">relations</em>.
+          </h1>
+          </sc-if>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- PRATIQUE -->
+  <sc-if value="{{ isPratique }}">
+    <main data-m="pad" style="max-width:1200px;margin:0 auto;padding:44px 40px 120px">
+      <h1 data-reveal="" style="font-weight:600;font-size:44px;margin:0 0 56px"><em style="font-style:italic;font-weight:400">{ </em>{{ t.navPratique }}<em style="font-style:italic;font-weight:400"> }</em></h1>
+
+      <section data-m="indent" style="max-width: min(820px,82%); margin-left: 18%; padding-bottom: 80px">
+        <div data-reveal="">
+        <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+        <p style="font-family: 'Archivo',sans-serif; font-size: 28px; line-height: 1.4; letter-spacing: 0.05em; margin: 0; font-weight: 500">ORMA développe une pratique de <u>recherche située.</u></p>
+        <div data-m="pstat" style="margin-top:34px;font-size:21px;text-align:justify;max-width:56ch">
+          <p style="margin:0 0 22px">Un territoire, une organisation, une communauté ne se résument ni à leur forme, ni à leur géographie. <u>Ils se construisent par les relations qui les traversent</u>&nbsp;: les <u>usages</u> qui s'y inventent, les <u>histoires</u> qui s'y transmettent, les <u>cultures</u> qui s'y croisent, le <u>vivant</u> qui les habite.</p>
+          <p style="margin:0">Ces relations produisent des dynamiques invisibles. <br>Les comprendre est le préalable à toute conception juste.</p>
+        </div>
+        </sc-if>
+        <sc-if value="{{ isEN }}">
+        <p style="font-family: 'Archivo',sans-serif; font-size: 28px; line-height: 1.4; letter-spacing: 0.05em; margin: 0; font-weight: 500">ORMA works through a practice of <u>situated research.</u></p>
+        <div data-m="pstat" style="margin-top:34px;font-size:21px;text-align:justify;max-width:56ch">
+          <p style="margin:0 0 22px">A territory, an organisation, a community cannot be reduced to their form or their geography. <u>They are built by the relations that run through them</u>&nbsp;: the <u>uses</u> invented there, the <u>histories</u> passed on there, the <u>cultures</u> that meet there, the <u>living</u> that inhabit them.</p>
+          <p style="margin:0">These relations produce invisible dynamics. <br>Understanding them is the precondition for any sound design.</p>
+        </div>
+        </sc-if><div data-m="c2" style="margin-top:52px;text-align:justify;font-size:17px;column-count:2;column-gap:48px;color:#333333">
+          
+          
+        </div></div>
+
+      </section>
+
+
+      <section data-m="indent" style="max-width:min(820px,82%);margin-left:18%">
+        
+        <div data-m="g3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:48px">
+          <sc-for list="{{ competences }}" as="g" hint-placeholder-count="3">
+            <div data-reveal="" data-group="" style="position:relative;border-top:1px solid #111111;padding-top:22px">
+              <span data-hover-style="transform:translateX(12px)" style="position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:#111111;transition:transform 480ms cubic-bezier(.22,.61,.36,1)"></span>
+              <h3 style="font-style:italic;font-weight:500;font-size:22px;margin:0 0 20px">{{ g.bracketed }}</h3>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="2">
+                  <span style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:#333333;border:1px solid #dddddd;padding:9px 13px;align-self:flex-start;line-height:1.35">{{ c }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+
+
+
+      <section data-m="indent" style="max-width:min(820px,82%);margin-left:18%;padding-top:96px">
+        <p data-reveal="" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#666666;margin:0 0 16px"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#111111;vertical-align:middle;margin-right:10px;margin-bottom:2px"></span>{{ t.methode }}</p>
+        <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+        <h2 data-reveal="" style="font-weight:500;font-size:clamp(26px,2.8vw,36px);margin:0 0 20px">Une pratique située à la croisée de la recherche, <br>du design et de la stratégie.</h2>
+        <p data-reveal="" style="max-width:70ch;margin:0;font-size:20px;text-align:justify">À travers des enquêtes, des observations et une approche interdisciplinaire, ORMA développe une pratique de recherche située qui récolte, interprète et traduit les usages, les histoires, les cultures et les identités afin d'éclairer la conception des projets liés aux lieux de vie.</p>
+        </sc-if>
+        <sc-if value="{{ isEN }}">
+        <h2 data-reveal="" style="font-weight:500;font-size:clamp(26px,2.8vw,36px);margin:0 0 20px">A situated practice at the meeting point of research, <br>design and strategy.</h2>
+        <p data-reveal="" style="max-width:70ch;margin:0;font-size:20px;text-align:justify">Through field enquiry, observation and an interdisciplinary approach, ORMA works through a practice of situated research that gathers, interprets and translates uses, histories, cultures and identities, in order to inform the design of projects tied to living places.</p>
+        </sc-if>
+      </section>
+
+      <section data-reveal="" data-m="indent" style="max-width:min(820px,82%);margin-left:18%;padding-top:96px">
+        <p style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#666666;margin:0 0 22px"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#111111;vertical-align:middle;margin-right:10px;margin-bottom:2px"></span>{{ t.commanditaires }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px 40px;font-size:18px">
+          <sc-for list="{{ sponsors }}" as="s" hint-placeholder-count="4">
+            <span>— {{ s }}</span>
+          </sc-for>
+        </div>
+      </section>
+
+      
+    </main>
+  </sc-if>
+
+  <!-- PROJETS -->
+  <sc-if value="{{ isProjets }}">
+    <main data-m="pad" style="max-width:1200px;margin:0 auto;padding:44px 40px 120px">
+      <h1 data-reveal="" style="font-weight:600;font-size:44px;margin:0 0 48px"><em style="font-style:italic;font-weight:400">{ </em>{{ t.navProjets }}<em style="font-style:italic;font-weight:400"> }</em></h1>
+
+      <p data-reveal="" style="font-family: 'EB Garamond',serif; font-weight: 500; font-size: 25px; line-height: 1.4; margin: 0 0 72px; text-wrap: pretty; max-width: 844px">{{ t.projetsIntro }}</p>
+      <div data-m="pgrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:72px 14px">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="10">
+          <div data-reveal="" data-group="" style="cursor:default">
+            <div data-m="pimg" style="position:relative;aspect-ratio:3/4.2;background:#F2F1EE;overflow:hidden">
+              <img src="{{ p.photo }}" alt="{{ p.titre }}" loading="lazy" data-hover-style="filter:grayscale(0) contrast(1) brightness(1)" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.06) brightness(1.02);transition:filter 620ms cubic-bezier(.22,.61,.36,1)">
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:16px">
+              <span style="font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:0.04em;color:#111111">{{ p.numero }}</span>
+              <h3 data-hover-style="opacity:0.45" onClick="{{ p.onClick }}" style="font-family:'Archivo',sans-serif;font-weight:500;font-size:13.5px;letter-spacing:0.07em;text-transform:uppercase;margin:0;line-height:1.35;cursor:pointer;transition:opacity 380ms ease">{{ p.titre }}</h3>
+              <span></span>
+              <p data-m="pleg" style="margin:0;font-family:'Archivo',sans-serif;font-size:13.5px;line-height:1.5;color:#9A9A9A">{{ p.legende }}</p>
+            </div>
+          </div>
+        </sc-for>
+        <div data-m="reldef" data-reveal="" style="grid-column:span 2;align-self:end;padding-left:40px">
+          <div style="display:grid;grid-template-columns:1fr 14px;gap:0 26px;justify-content:end;text-align:right">
+            <div>
+              <p style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#777777;margin:0 0 10px">{{ t.nf }}</p>
+              <p style="font-style:italic;font-weight:500;font-size:44px;line-height:1;margin:0 0 22px">Relation</p>
+              <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+              <p style="font-size:21px;line-height:1.6;margin:0 0 0 auto;max-width:38ch">Ce qui existe non pas dans les choses, mais entre elles&nbsp;: le lien qui façonne un lieu, une culture, une communauté, autant que leur forme.</p>
+              </sc-if>
+              <sc-if value="{{ isEN }}">
+              <p style="font-size:21px;line-height:1.6;margin:0 0 0 auto;max-width:38ch">What exists not within things, but between them&nbsp;: the bond that shapes a place, a culture, a community, as much as their form.</p>
+              </sc-if>
+            </div>
+            <div style="position:relative;justify-self:center;width:1px;background:#111111"><span style="position:absolute;top:0;left:-3px;width:7px;height:7px;border-radius:50%;background:#111111"></span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- FICHE PROJET -->
+  <sc-if value="{{ isFiche }}">
+    <main data-m="pad" style="max-width:1200px;margin:0 auto;padding:44px 40px 120px">
+      <span style="font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:0.04em;cursor:pointer" onClick="{{ goProjets }}">← {{ t.navProjets }}</span>
+      <h1 data-reveal="" style="font-family:'Archivo',sans-serif;font-weight:500;font-size:36px;letter-spacing:0.07em;text-transform:uppercase;margin:36px 0 56px">{{ currentProject.titre }}</h1>
+
+      <div data-m="indent" style="margin-left:18%;max-width:min(820px,82%)">
+      <p style="font-family:'Archivo',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:#777777;margin:0 0 26px">{{ currentProject.sousTitre }}</p>
+      <p data-reveal="" style="font-size: 19px; line-height: 1.6; text-align: justify; margin: 0 0 28px; font-weight: 700">{{ currentProject.contexte }}</p>
+      <sc-if value="{{ currentProject.hasActions }}">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:12px;margin:0 0 48px">
+      <sc-if value="{{ currentProject.hasLien }}">
+        <a data-group="" href="{{ currentProject.lien }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:#111111;text-decoration:none;border:1px solid #111111;padding:13px 20px">
+          <span data-hover-style="transform:translateX(4px)" style="width:6px;height:6px;border-radius:50%;background:#111111;transition:transform 420ms cubic-bezier(.22,.61,.36,1)"></span>{{ currentProject.lienLabel }}
+        </a>
+      </sc-if>
+      <sc-if value="{{ currentProject.hasFichier }}">
+        <a data-group="" href="{{ currentProject.fichier }}" download="" style="display:inline-flex;align-items:center;gap:12px;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:#111111;text-decoration:none;border:1px solid #111111;padding:13px 20px" target="_blank" rel="noopener noreferrer">
+          <span data-hover-style="transform:translateY(3px)" style="width:6px;height:6px;border-radius:50%;background:#111111;transition:transform 420ms cubic-bezier(.22,.61,.36,1)"></span>{{ currentProject.fichierLabel }}
+        </a>
+      </sc-if>
+      <sc-if value="{{ currentProject.hasKit }}">
+        <a data-group="" href="{{ currentProject.kit }}" download="" style="display:inline-flex;align-items:center;gap:12px;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:#111111;text-decoration:none;border:1px solid #111111;padding:13px 20px">
+          <span data-hover-style="transform:translateY(3px)" style="width:6px;height:6px;border-radius:50%;background:#111111;transition:transform 420ms cubic-bezier(.22,.61,.36,1)"></span>{{ t.kitComplet }}
+        </a>
+      </sc-if>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ currentProject.hasPhoto }}">
+      <div data-m="fphoto" data-reveal="" style="display: block; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr); grid-template-rows: minmax(0,1fr) minmax(0,1fr); gap: 12px; height: 440px; margin-bottom: 56px">
+        
+        
+        
+        <sc-for list="{{ fichePhotos }}" as="ph" hint-placeholder-count="1">
+          <img src="{{ ph.src }}" alt="{{ ph.alt }}" loading="lazy" style="grid-column:2 / 4;width:100%;height:100%;object-fit:cover;display:block">
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <div style="display:flex;flex-direction:column;gap:44px">
+        <div data-reveal="" data-group="" style="position:relative;border-top:1px solid #111111;padding-top:24px">
+          <span data-hover-style="transform:translateX(12px)" style="position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:#111111;transition:transform 480ms cubic-bezier(.22,.61,.36,1)"></span>
+          <h3 style="font-style:italic;font-weight:500;font-size:23px;margin:0 0 14px">{{ t.recolter }}</h3>
+          <p style="margin:0;font-size:18px;line-height:1.6;text-align:justify;color:#333333">{{ currentProject.recolter }}</p>
+          <sc-if value="{{ currentProject.hasOutilsRecolter }}">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:22px">
+              <sc-for list="{{ currentProject.outilsRecolter }}" as="o" hint-placeholder-count="5">
+                <span style="display:inline-flex;align-items:baseline;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.01em;color:#444444;background:#F6F3EC;border:1px solid #E7E1D4;padding:6px 11px"><span style="color:#9A9081;font-size:11px">{{ o.num }}</span>{{ o.nom }}</span>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <div data-reveal="" data-group="" style="position:relative;border-top:1px solid #111111;padding-top:24px">
+          <span data-hover-style="transform:translateX(12px)" style="position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:#111111;transition:transform 480ms cubic-bezier(.22,.61,.36,1)"></span>
+          <h3 style="font-style:italic;font-weight:500;font-size:23px;margin:0 0 14px">{{ t.traduire }}</h3>
+          <p style="margin:0;font-size:18px;line-height:1.6;text-align:justify;color:#333333">{{ currentProject.traduire }}</p>
+          <sc-if value="{{ currentProject.hasOutilsTraduire }}">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:22px">
+              <sc-for list="{{ currentProject.outilsTraduire }}" as="o" hint-placeholder-count="3">
+                <span style="display:inline-flex;align-items:baseline;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.01em;color:#444444;background:#F6F3EC;border:1px solid #E7E1D4;padding:6px 11px"><span style="color:#9A9081;font-size:11px">{{ o.num }}</span>{{ o.nom }}</span>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <div data-reveal="" data-group="" style="position:relative;border-top:1px solid #111111;padding-top:24px">
+          <span data-hover-style="transform:translateX(12px)" style="position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:#111111;transition:transform 480ms cubic-bezier(.22,.61,.36,1)"></span>
+          <h3 style="font-style:italic;font-weight:500;font-size:23px;margin:0 0 14px">{{ t.transmettre }}</h3>
+          <p style="margin:0;font-size:18px;line-height:1.6;text-align:justify;color:#333333">{{ currentProject.transmettre }}</p>
+          <sc-if value="{{ currentProject.hasOutilsTransmettre }}">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:22px">
+              <sc-for list="{{ currentProject.outilsTransmettre }}" as="o" hint-placeholder-count="1">
+                <span style="display:inline-flex;align-items:baseline;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.01em;color:#444444;background:#F6F3EC;border:1px solid #E7E1D4;padding:6px 11px"><span style="color:#9A9081;font-size:11px">{{ o.num }}</span>{{ o.nom }}</span>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <sc-if value="{{ currentProject.hasKit }}">
+        <div data-reveal="" data-group="" style="margin-top:56px;border-top:1px solid #111111;padding-top:28px">
+          <a href="{{ currentProject.kit }}" download="" style="display:inline-flex;align-items:center;gap:12px;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:#111111;text-decoration:none;border:1px solid #111111;padding:13px 20px">
+            <span data-hover-style="transform:translateY(3px)" style="width:6px;height:6px;border-radius:50%;background:#111111;transition:transform 420ms cubic-bezier(.22,.61,.36,1)"></span>{{ t.kitComplet }}
+          </a>
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:14px 0 0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;color:#777777;max-width:62ch">Besoin d’adapter ces outils à votre propre terrain ? Un accompagnement est possible — les versions modifiables (Word/Excel) en font partie.</p>
+          </sc-if>
+          <sc-if value="{{ isEN }}">
+          <p style="margin:14px 0 0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;color:#777777;max-width:62ch">Need to adapt these tools to your own field? Support is available — the editable versions (Word/Excel) are part of it.</p>
+          </sc-if>
+        </div>
+      </sc-if>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- A PROPOS -->
+  <sc-if value="{{ isApropos }}">
+    <main data-m="pad" style="max-width:1200px;margin:0 auto;padding:44px 40px 120px">
+      <h1 data-reveal="" style="font-weight:600;font-size:44px;margin:0 0 56px"><em style="font-style:italic;font-weight:400">{ </em>{{ t.navApropos }}<em style="font-style:italic;font-weight:400"> }</em></h1>
+      <section data-m="indent" style="max-width:min(820px,82%);margin-left:18%">
+        <div data-reveal="" style="padding:0 0 64px">
+          
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+          <p style="font-family: 'Archivo',sans-serif; font-weight: 700; font-size: 32px; line-height: 1.45; max-width: 20ch; margin: 0">Les lieux de vie ne sont jamais neutres.</p>
+          <div data-m="c2" style="margin-top:44px;text-align:justify;font-size:17px;column-count:2;column-gap:48px;color:#333333">
+            <div style="margin:22px 0 0;break-inside:avoid"><p dir="ltr">ORMA est un studio de recherche et de design que j'ai fondé, Capucine Lebrun, après un parcours entre le terrain, l'enseignement et la conception. Je transmets ce que je récolte de deux manières : par l'enseignement — notamment à Strate École de Design — et par la mise en open source de certaines méthodes, comme Récolte(s).</p>
+<p dir="ltr">Cette dernière n'est pas un geste accessoire : c'est une conviction. Les outils de recherche ne devraient pas rester enfermés dans un seul projet ou une seule pratique ; ils gagnent à circuler, à être adaptés, discutés, réappropriés — par d'autres concepteur·rices, d'autres terrains.</p>
+<p dir="ltr">Dans l'enseignement comme dans la pratique, mon objectif est le même : que les concepteur·rices prennent conscience qu'il faut composer avec la réalité de l'écosystème du projet, et l'y intégrer — les relations entre les vivant·es qui s'y développent.</p></div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ isEN }}">
+          <p style="font-family: 'Archivo',sans-serif; font-weight: 700; font-size: 32px; line-height: 1.45; max-width: 20ch; margin: 0">Living places are never neutral.</p>
+          <div data-m="c2" style="margin-top:44px;text-align:justify;font-size:17px;column-count:2;column-gap:48px;color:#333333">
+            <div style="margin:22px 0 0;break-inside:avoid"><p dir="ltr">ORMA is a research and design studio I founded — Capucine Lebrun — after a path running between fieldwork, teaching and design. I pass on what I gather in two ways: through teaching, notably at Strate École de Design, and by releasing certain methods open-source, as with Récolte(s).</p>
+<p dir="ltr">The second is not incidental: it is a conviction. Research tools should not stay locked inside a single project or a single practice; they gain from circulating, from being adapted, argued with, taken up again — by other designers, on other ground.</p>
+<p dir="ltr">In teaching as in practice, my aim is the same: that designers come to see that they must work with the reality of a project's ecosystem, and build it in — the relations between the living beings that develop there.</p></div>
+          </div>
+          </sc-if>
+        </div>
+
+        
+
+        <div data-m="g2" style="display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start">
+        <div data-reveal="" style="border-top:1px solid #111111;padding:28px 0 64px">
+          <h2 style="font-weight:600;font-size:27px;margin:0 0 26px">{{ t.enseignement }}</h2>
+          <div style="display:flex;flex-direction:column;gap:34px">
+            <sc-for list="{{ enseignement }}" as="e" hint-placeholder-count="3">
+              <div data-group="" style="position:relative;padding-left:24px">
+                <span data-hover-style="transform:translateX(5px)" style="position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:#111111;transition:transform 480ms cubic-bezier(.22,.61,.36,1)"></span>
+                <h3 style="font-weight:600;font-size:20px;margin:0 0 6px">{{ e.titre }}</h3>
+                <p style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:#777777;margin:0">{{ e.meta }}</p>
+                <p style="font-size: 19px; text-align: justify; margin: {{ e.texteMargin }}; font-weight: 300">{{ e.texte }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        
+
+        <div data-reveal="" style="border-top:1px solid #111111;padding:28px 0 64px">
+          <h2 style="font-weight: 600; font-size: 27px; margin: 0 0 26px; width: 313px; height: 112px">{{ t.collaborations }}</h2>
+          
+          <p style="font-size: 19px; margin: 0; font-weight: 200">Atelier Craft · Cutwork · MiZa · Veolia · Kelsea Crawford · Le Loft du Canal · Institut Catholique de Paris · Education Populaire chez SOS Racisme ·&nbsp;Nathanaël Dorent Architecture · Olivia Lara Owen</p>
+        </div>
+        </div>
+
+        <div data-reveal="" style="border-top:1px solid #111111;padding:28px 0">
+          <h2 style="font-weight:600;font-size:27px;margin:0 0 26px">{{ t.contact }}</h2>
+          <p style="font-size: 16px; font-weight: 600; margin: 0 0 14px; font-family: Archivo"><a href="mailto:contact@ormastudio.space">contact@ormastudio.space</a></p>
+          <p style="font-size:19px;margin:0">Paris, France</p>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  </div>
+
+  <sc-if value="{{ showChrome }}">
+  <footer data-m="fpad" data-reveal="" style="border-top:1px solid #111111;margin-top:20px;padding:40px 40px 48px;text-align:center">
+    <svg viewBox="440 500 2220 620" role="img" aria-label="Orma" onClick="{{ goHome }}" style="width:107px;height:auto;display:block;margin:0 auto 18px;cursor:pointer"><use href="#ormaGlyph" fill="#161615"></use></svg>
+    <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}"><p data-m="tag" style="font-style:italic;font-size:14px;color:#666666;margin:0 0 22px">{ récolter }&nbsp;&nbsp;( traduire )&nbsp;&nbsp;[ transmettre ]</p></sc-if>
+    <sc-if value="{{ isEN }}"><p data-m="tag" style="font-style:italic;font-size:14px;color:#666666;margin:0 0 22px">{ gather }&nbsp;&nbsp;( translate )&nbsp;&nbsp;[ pass on ]</p></sc-if>
+    <nav style="display:flex;justify-content:center;gap:32px;font-size:16px;margin-bottom:18px">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="4">
+        <span style="cursor:pointer" onClick="{{ item.onClick }}">{{ item.label }}</span>
+      </sc-for>
+    </nav>
+    <p style="font-size:14px;color:#999999;margin:0">contact@ormastudio.space — Paris, France</p>
+  </footer>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Animations&quot;},&quot;revealDistance&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:16,&quot;min&quot;:0,&quot;max&quot;:60,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Animations&quot;},&quot;revealDuration&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:900,&quot;min&quot;:200,&quot;max&quot;:2000,&quot;step&quot;:50,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Animations&quot;},&quot;revealStagger&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:90,&quot;min&quot;:0,&quot;max&quot;:300,&quot;step&quot;:10,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Animations&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', projectIndex: 0, carnetIndex: 0, visible: true, entered: false, lang: 'fr' };
+
+  toggleLang = () => this.setState(st => ({ lang: st.lang === 'fr' ? 'en' : 'fr' }));
+
+  ui = {
+    fr: { navProjets: 'projets', navPratique: 'pratique', navApropos: 'à propos',
+      methode: 'Méthode', commanditaires: 'Commanditaires', nf: 'n. f.',
+      recolter: '( Récolter )', traduire: '{ Traduire }', transmettre: '[ Transmettre ]',
+      enseignement: 'Enseignement', collaborations: 'Collaborations', contact: 'Contact',
+      kitComplet: 'Télécharger le kit complet',
+      projetsIntro: "Les usages, les gestes, les récits, les savoir-faire et les relations deviennent les témoins d'une époque autant que les ressources des projets à venir." },
+    en: { navProjets: 'projects', navPratique: 'practice', navApropos: 'about',
+      methode: 'Method', commanditaires: 'Commissioning bodies', nf: 'n.',
+      recolter: '( Gathering )', traduire: '{ Translating }', transmettre: '[ Passing on ]',
+      enseignement: 'Teaching', collaborations: 'Collaborations', contact: 'Contact',
+      kitComplet: 'Download the full kit',
+      projetsIntro: "Uses, gestures, accounts, know-how and relations become the witnesses of an era as much as the resources of the projects to come." },
+  };
+
+  projectsData = [
+    {
+      titre: 'Plasticité des Lieux de Vie',
+      slug: 'plasticite',
+      annees: '2025—2026',
+      lien: 'https://www.plasticite-design.com/', lienLabel: 'Voir le site de la Chaire',
+      categorie: 'Chaire · Recherche, édition & production',
+      contexte: "La Chaire « Plasticité des Lieux de Vie », hébergée par Strate École de Design et la Région Île-de-France dans le cadre du programme régional « Construire au Futur, Habiter le Futur », explore une approche sensible et systémique du territoire par le design. Intervention comme chargée de projet, rédactrice et conceptrice graphique aux côtés d'Anne Bugugnani (directrice de la Chaire), Sophie Rouay-Lambert et Martin Locret-Collet (chercheur·euses référent·es). ",
+      recolter: "Rédaction d'articles sur des projets exemplaires venant illustrer les quatre plasticités identifiées par la recherche de la Chaire — relationnelle, organisationnelle, œconomique et technique — et conception éditoriale du site web qui les rassemble.",
+      traduire: "Conception du manifeste « La Fabrique de la Plasti-Cité », qui formalise la méthode de la Chaire, ainsi que du schéma de synthèse reliant les quatre plasticités aux rôles du designer. Cette traduction graphique et éditoriale rend opérante une recherche jusque-là dispersée entre séminaires et contributions de chercheur·euses.",
+      transmettre: "Conception de la trame de discours, choix des intervenant·es et production de la matinée de restitution « Le Temps comme matériau du Projet » (4 juin 2026) — réunissant l'Atelier CRAFT, Bellastock et Vraiment Vraiment autour de la méthode plastique. Co-direction de l'essai « Faire reliance pour Faire Plasticité », qui prolonge cette restitution au-delà de l'événement.",
+    },
+    {
+      titre: 'Veolia — Siège social',
+      slug: 'veolia',
+      sansPhoto: true,
+      annees: '2025—2026',
+      categorie: "Recherche de terrain & stratégie d'espace",
+      contexte: "Mission commandée par l'Atelier CRAFT pour repenser le siège social de Veolia : revoir les usages des équipes et leur répartition dans l'espace avant de remanier les espaces eux-mêmes.",
+      recolter: "Douze entretiens menés auprès de employé.es, complétés par deux journées de terrain — pour documenter les usages tels qu'ils sont réellement vécus, plutôt que tels qu'ils sont prescrits par l'organisation existante.",
+      traduire: "Cette matière a été croisée avec l'équipe de l'Atelier CRAFT pour identifier les écarts entre usages réels et répartition actuelle des espaces, et en dégager des principes de réorganisation.",
+      transmettre: "Restitution sous forme de présentation stratégique co-construite avec Atelier CRAFT, posant les bases du remaniement du siège. Mission en cours.",
+    },
+    {
+      titre: 'Mina Zayed',
+      slug: 'mina-zayed',
+      annees: '2024',
+      categorie: 'Recherche de terrain & production vidéo',
+      contexte: "Recherche qualitative pour la réhabilitation du port de Mina Zayed à Abu Dhabi, commandée par MiZa à Cutwork.",
+      recolter: "Série de 24 entretiens menés sur une semaine auprès des habitant·es de la ville d'Abu Dhabi et usager·ères du port, complétée par des visites immersives de la ville et des rencontres en famille — pêcheur·euses, commerçant·es, habitant·es de longue date comme expatrié·es.",
+      traduire: "Ce récit collecté a permis de faire le lien entre le brief du commanditaire, le besoin des usagers et l'expertise architecturale réalisée par Cutwork — de questionner et fiabiliser le brief plutôt que de le prendre pour acquis, en le confrontant à la réalité vécue du site.",
+      transmettre: "Direction artistique, scripts et réalisation d'une vidéo de 10 minutes restituant les témoignages recueillis — conçue comme outil de dialogue entre le commanditaire et le tissu social existant du port.",
+    },
+    {
+      titre: "L'Unité de Voisinage",
+      slug: 'unite-de-voisinage',
+      annees: '2021',
+      categorie: 'Commande Bouygues Immobilier · Conception collaborative',
+      contexte: "Commande de laboratoire d'espaces à l'échelle du quartier, sous le thème de l'urbanisme transitoire pour Bouygues Immobilier.",
+      recolter: "Recensement des problématiques d'usage à quatre échelles imbriquées : le logement, le hall, le pied d'immeuble à usages partagés, la rue.",
+      traduire: "Deux principes ont guidé la conception — l'inclusif et l'adaptatif — traduits en un système modulaire (rails lumière, parois amovibles, mobilier reconfigurable) permettant aux habitant·es de renouveler les espaces communs selon leurs besoins.",
+      transmettre: "Une maquette au 1:20 et un catalogue de co-création ont été remis aux futur·es habitant·es lors d'une rencontre en espace témoin, où chacun·e choisit les usages de son pied d'immeuble.",
+    },
+    {
+      titre: 'Empreinte(s)',
+      slug: 'empreintes',
+      annees: '2026, en cours',
+      categorie: 'Série Documentaire\n',
+      contexte: "Empreinte(s) est une série de portraits qui interroge la façon dont les créateur·rices se construisent à partir de ce qui leur est transmis, entre héritages, identités et réappropriations.",
+      recolter: "Récolte(s) est un projet documentaire qui recueille les récits de créateur·rices — designers, chef·fes, auteur·rices, artisan·es ou artistes — autour de ce qui se transmet. Héritages familiaux, gestes, mémoires, silences, ruptures ou appartenances : chaque entretien explore la manière dont ces transmissions façonnent un parcours de création.",
+      traduire: "Chaque épisode est conçu comme un portrait documentaire. À partir d'une conversation, le montage tisse plusieurs fils — identité, famille, territoire, genre, savoir-faire, mémoire — pour faire émerger une réflexion sensible sur ce que nous recevons, transformons et transmettons à notre tour.",
+      transmettre: "Pensé comme un format accessible, Récolte(s) ouvre cette recherche au-delà du cadre académique. Le portrait donne à entendre des expériences singulières qui, mises en regard, dessinent une mémoire collective des héritages contemporains.",
+    },
+    {
+      titre: 'La Fragilité des Empreintes',
+      slug: 'fragilite',
+      annees: '2021—2022',
+      fichier: 'public/documents/la-fragilite-des-empreintes.pdf', fichierLabel: 'Télécharger le mémoire',
+      categorie: 'Mémoire de recherche',
+      contexte: "Essai de design questionnant si l'on peut vivre sans laisser d'empreinte — mémorielle, sensible, silencieuse, héritée, transmise, identitaire — point de départ théorique de tout le fil de recherche qui suit.",
+      recolter: "À travers un corpus croisant histoire, anthropologie, sociologie, philosophie et psychiatrie, l'essai explore les liens entre mémoire, traumatisme et construction identitaire. Il met en évidence que les histoires familiales, les silences et les héritages invisibles façonnent durablement notre rapport à nous-mêmes et aux autres.",
+      traduire: "Les recherches conduisent à une seconde intuition : la mémoire ne se transmet pas uniquement par les récits ou les archives, mais aussi par les espaces qui les rendent possibles. Les schémas réalisés dans l'essai traduisent les processus de reconnaissance de soi, de reconnaissance sociale et de transmission générationnelle. Ils montrent également que les lieux — domestiques, institutionnels ou mémoriels — influencent profondément la manière dont une mémoire peut être racontée, partagée ou au contraire empêchée. L'espace apparaît alors comme un révélateur de mémoire : il accueille les récits, favorise les interactions et soutient les processus de reconnaissance.",
+      transmettre: "L'essai se conclut par une question qui ouvre la recherche suivante : comment le design peut-il concevoir des dipositifs spatiaux capables de soutenir, révéler et transmettre les mémoires familiales ? Cette interrogation marque un déplacement du regard. L'enjeu n'est plus uniquement de préserver des archives ou de concevoir des mémoriaux, mais d'imaginer des expériences spatiales qui permettent aux individus de faire émerger leurs récits, de les partager et de les inscrire dans une mémoire collective vivante. Cette question devient le point de départ du projet Récolte(s).",
+    },
+    {
+      titre: 'Héritage(s)',
+      slug: 'heritages',
+      photoBrute: true,
+      annees: '2022',
+      categorie: 'Projet de diplôme',
+      contexte: "Dispositif itinérant de collecte des mémoires familiales liées à la Guerre d'Algérie, conçu pour les lycées marseillais — ville où deux tiers des habitant·es ont un lien avec l'Algérie sur trois générations.",
+      recolter: "Réunir les récits avant de produire les formes. Héritage(s) s'appuie sur un travail de collecte mené auprès des élèves, des enseignant·es, des familles et des témoins afin de faire émerger une mémoire située, multiple et parfois contradictoire.",
+      traduire: "Le projet transforme cette matière en un parcours pédagogique fondé sur les temporalités de la transmission. Chaque séquence — apprendre, rassembler, témoigner, se reconnaître — engage de nouveaux acteurs et fait évoluer la mémoire, non comme un contenu figé, mais comme une construction collective. Au fil de ce processus, les participant·es élaborent une carte sensible mémorielle qui accompagne le parcours et révèle les liens entre leurs récits.",
+      transmettre: "La diffusion constitue une nouvelle étape du projet plutôt qu'un aboutissement. En partageant les récits produits, Héritage(s) prolonge la transmission au-delà du cadre scolaire et fait de chaque participant un potentiel passeur de mémoire.",
+    },
+    {
+      titre: 'Récolte(s)',
+      slug: 'recoltes',
+      annees: '2022—2025',
+      fichier: 'public/documents/recoltes.pdf', fichierLabel: 'Télécharger l’ouvrage',
+      categorie: 'Méthode & édition',
+      contexte: "Méthodologie de collecte des récits, objets et documents familiaux, développée à partir d'entretiens menés dans son propre cercle familial.",
+      recolter: "Neuf outils, un protocole en deux temps : une collecte quantitative — objets, documents, récits oraux consignés un à un dans un système d'inventaire numéroté — puis une collecte qualitative, guidée par les zones floues et les silences que chaque famille porte sans les avoir nommés. Charte éthique, fiche d'angle, carnet de terrain, guide d'entretien, cartographie familiale : chaque outil cadre une étape du terrain, du premier contact à la dernière trace retrouvée.",
+      traduire: "Ce qui a été récolté est mis en tension : transcription, inventaire croisé, analyse des motifs récurrents. De la matière brute émergent des portraits sensibles des aïeul·es — reconstruits à travers leurs objets, leurs gestes, leurs récits — et les leviers de transmission propres à chaque famille, ceux qui se répètent d'une génération à l'autre sans qu'on les ait remarqués.",
+      transmettre: "La méthode est publiée en ouvrage et le protocole rendu open-source : neuf outils téléchargeables, pensés pour être repris tels quels par d'autres familles, au-delà du cercle de départ. Parce qu'une méthode de récolte n'a de valeur que si elle peut être héritée à son tour.",
+      outilsRecolter: ['Charte éthique', "Fiche d'angle", 'Carnet de terrain', "Guide d'entretien", 'Cartographie familiale'],
+      outilsTraduire: ['Grille de transcription', "Tableau d'inventaire", 'Grille d’analyse des motifs'],
+      outilsTransmettre: ['Arbre de décision de restitution'],
+      kit: 'public/documents/kit-recoltes.zip',
+    },
+    {
+      titre: 'Petit Poucet',
+      slug: 'petit-poucet',
+      sansPhoto: true,
+      annees: '2020',
+      categorie: 'Système de gouvernance & agriculture urbaine',
+      contexte: "Réalisation d'un système de mise en réseau de pépinières voisines, fonctionnant sur le principe du troc, pour un appel à projets de la Ville de Paris. Le toit d'un immeuble donnant sur le métro aérien de Stalingrad — à accès privatif imposé, programme centré sur la culture — n'en est que le support : le véritable sujet est le système qu'il permet de faire tenir.",
+      recolter: "Cartographie du quartier : recensement des jardins partagés existants, dont un né quelques années plus tôt un peu plus bas sur le boulevard, et des contraintes du site (accès privatif, programme culturel imposé par la Ville).",
+      traduire: "Cette cartographie a fait émerger un principe de gouvernance plutôt qu'un plan d'aménagement : auto-gestion par un comité d'habitant·es inscrit·es à une association, vote pour le choix des plantations et l'admission de nouveaux jardiniers-habitant·es, échange de graines et de terre entre toits par le troc plutôt que par l'achat.",
+      transmettre: "Une architecture support a été proposée pour rendre ce système possible — serre, bacs de culture, salle de comité — mais la production excédentaire donnée en mairie et la formation de volontaires en service civique comptent tout autant que l'espace : le livrable central reste le protocole de gouvernance, reproductible sur d'autres toits.",
+    },
+    {
+      titre: 'Le Vent du Changement',
+      slug: 'vent-du-changement',
+      annees: '2019',
+      categorie: 'Scénographie & médiation · Théâtre de la ville de Sèvres',
+      contexte: "Réalisation de la scénographie et de la signalétique générale d'un festival, sur le thème d'un monde post-apocalyptique et à budget minimal, encadrée par l'Atelier CRAFT (studio de scénographie parisien) — pour un festival au prix d'entrée participatif.",
+      recolter: "Le postulat du festival : un prix d'entrée libre, laissé au don. Le sujet à traiter n'était donc pas un décor, mais une question — comment rendre visible ce qu'un don représente, pour que le public en perçoive le poids réel plutôt qu'un geste abstrait.",
+      traduire: "L'enjeu du projet tenait tout entier dans cette traduction : donner une forme symbolique et mécanique à un don monétaire. Une urne interactive convertit chaque don en une bille, relâchée dans un système de moulins qui s'actionnent en série — le geste financier devient un geste physique, visible, démultiplié.",
+      transmettre: "Le dispositif transforme chaque don en une séquence mécanique. Une bille parcourt un réseau de rails avant d'actionner trois moulins à vent, rendant perceptible la manière dont un geste individuel met en mouvement un système collectif.",
+    },
+  ];
+
+
+  navKeys = [
+    { key: 'projets', t: 'navProjets' },
+    { key: 'pratique', t: 'navPratique' },
+    { key: 'apropos', t: 'navApropos' },
+  ];
+
+  projectsEN = {
+    plasticite: {
+      titre: 'Plasticité des Lieux de Vie',
+      lienLabel: 'Visit the Chair website',
+      categorie: 'Research Chair · Research, editorial & production',
+      contexte: "The « Plasticité des Lieux de Vie » Chair, hosted by Strate École de Design and the Île-de-France Region within the regional programme « Construire au Futur, Habiter le Futur », explores a sensitive, systemic approach to territory through design. Involved as project manager, writer and graphic designer alongside Anne Bugugnani (Chair director), Sophie Rouay-Lambert and Martin Locret-Collet (lead researchers).",
+      recolter: "Writing articles on exemplary projects illustrating the four plasticities identified by the Chair's research — relational, organisational, œconomic and technical — and editorial design of the website that brings them together.",
+      traduire: "Design of the manifesto « La Fabrique de la Plasti-Cité », which formalises the Chair's method, together with the synthesis diagram linking the four plasticities to the designer's roles. This graphic and editorial translation makes operative a body of research until then scattered across seminars and individual contributions.",
+      transmettre: "Writing the through-line, selecting the speakers and producing the closing morning « Time as project material » (June 4th 2026) — bringing together three exemplary french studios : Atelier CRAFT, Bellastock and Vraiment Vraiment around the plastic method. Co-editor of the essay « Faire reliance pour Faire Plasticité », which carries that morning beyond the event itself.",
+    },
+    veolia: {
+      titre: 'Veolia — Head Office',
+      categorie: 'Field research & spatial strategy',
+      contexte: "A commission from Atelier CRAFT to rethink Veolia's head office: reviewing how the teams actually use the building and how they are distributed across it, before reworking the spaces themselves.",
+      recolter: "Twelve interviews with employees, supported by two days in the field — documenting uses as they are lived, rather than as the existing organisation prescribes them.",
+      traduire: "This material was read across with the Atelier CRAFT team to identify the gaps between real uses and the current distribution of space, and to draw out principles for reorganisation.",
+      transmettre: "Delivered as a strategic presentation built jointly with Atelier CRAFT, setting the basis for reworking the head office. Ongoing.",
+    },
+    'mina-zayed': {
+      titre: 'Mina Zayed',
+      categorie: 'Field research & video production',
+      contexte: "Qualitative research for the rehabilitation of Mina Zayed port in Abu Dhabi, commissioned by MiZa through Cutwork.",
+      recolter: "Twenty-four interviews over one week with residents of Abu Dhabi and users of the port, alongside immersive visits across the city and meetings held in people's homes — fishers, traders, long-standing residents and expatriates alike.",
+      traduire: "The accounts gathered made it possible to connect the client's brief, the needs of users and the architectural expertise carried out by Cutwork — to question and strengthen the brief rather than take it as given, by holding it against the lived reality of the site.",
+      transmettre: "Art direction, script and production of a ten-minute film returning the testimonies gathered — conceived as a tool for dialogue between the client and the port's existing social fabric.",
+    },
+    'unite-de-voisinage': {
+      titre: 'The Neighbourhood Unit',
+      categorie: 'Bouygues Immobilier commission · Collaborative design',
+      contexte: "A commission for a laboratory of spaces at neighbourhood scale, on the theme of transitional urbanism, for Bouygues Immobilier.",
+      recolter: "A survey of everyday-use issues across four nested scales: the dwelling, the lobby, the shared ground floor, the street.",
+      traduire: "Two principles guided the design — inclusive and adaptive — translated into a modular system (lighting tracks, movable partitions, reconfigurable furniture) that lets residents renew the shared spaces as their needs change.",
+      transmettre: "A 1:20 model and a co-creation catalogue were handed to future residents at a meeting held in the show flat, where each person chooses the uses of their own ground floor.",
+    },
+    empreintes: {
+      titre: 'Imprint(s)',
+      categorie: 'Documentary series\n',
+      contexte: "Imprint(s) is a series of portraits examining how makers build themselves from what has been passed down to them, between inheritance, identity and reappropriation.",
+      recolter: "Récolte(s) is a documentary project gathering the accounts of makers — designers, chefs, writers, craftspeople and artists — around what gets passed on. Family inheritances, gestures, memories, silences, ruptures or belongings: each interview explores how these transmissions shape a creative path.",
+      traduire: "Each episode is conceived as a documentary portrait. From a single conversation, the edit weaves several threads — identity, family, territory, gender, craft, memory — to bring out a sensitive reflection on what we receive, transform and pass on in turn.",
+      transmettre: "Conceived as an accessible format, Récolte(s) opens this research beyond the academic frame. Each portrait gives voice to singular experiences which, set side by side, trace a collective memory of contemporary inheritance.",
+    },
+    fragilite: {
+      titre: 'The Fragility of Imprints',
+      fichierLabel: 'Download the thesis',
+      categorie: 'Research thesis',
+      contexte: "A design essay asking whether one can live without leaving an imprint — remembered, sensitive, silent, inherited, passed on, identity-bearing. The theoretical starting point of the whole line of research that follows.",
+      recolter: "Drawing on a corpus spanning history, anthropology, sociology, philosophy and psychiatry, the essay explores the links between memory, trauma and the construction of identity. It shows that family histories, silences and invisible inheritances durably shape our relationship to ourselves and to others.",
+      traduire: "The research leads to a second intuition: memory is not transmitted through accounts and archives alone, but also through the spaces that make them possible. The diagrams in the essay translate the processes of self-recognition, social recognition and generational transmission. They also show that places — domestic, institutional or memorial — deeply influence how a memory can be told, shared, or on the contrary prevented. Space then appears as a revealer of memory: it holds accounts, encourages interaction and supports the work of recognition.",
+      transmettre: "The essay closes on a question that opens the next piece of research: how can design conceive spatial devices capable of supporting, revealing and transmitting family memories? This marks a shift of attention. The point is no longer only to preserve archives or design memorials, but to imagine spatial experiences that let people bring their own accounts to the surface, share them and inscribe them in a living collective memory. That question became the starting point of Récolte(s).",
+    },
+    heritages: {
+      titre: 'Héritage(s)',
+      categorie: 'Graduation project',
+      contexte: "A travelling device for gathering the family memories tied to the Algerian War, designed for secondary schools in Marseille — a city where two thirds of residents have a link to Algeria across three generations.",
+      recolter: "Bringing the accounts together before producing any form. Héritage(s) rests on collection work carried out with students, teachers, families and witnesses, in order to bring out a situated memory: multiple, and at times contradictory.",
+      traduire: "The project turns this material into a teaching path built on the temporalities of transmission. Each sequence — learning, gathering, testifying, recognising oneself — engages new participants and shifts the memory, not as fixed content but as a collective construction. Along the way, participants build a sensitive memory map that accompanies the path and reveals the links between their accounts.",
+      transmettre: "Circulation is a further stage of the project rather than its conclusion. By sharing the accounts produced, Héritage(s) extends transmission beyond the school and makes every participant a potential carrier of memory.",
+    },
+    recoltes: {
+      titre: 'Récolte(s)',
+      fichierLabel: 'Download the book',
+      categorie: 'Method & publication',
+      contexte: "A methodology for gathering family accounts, objects and documents, developed from interviews conducted within my own family circle.",
+      recolter: "Nine tools, a two-part protocol: a quantitative gathering — objects, documents and oral accounts logged one by one in a numbered inventory system — then a qualitative one, guided by the blurred areas and the silences every family carries without having named them. Ethics charter, angle sheet, field notebook, interview guide, family mapping: each tool frames one stage of the fieldwork, from first contact to the last trace recovered.",
+      traduire: "What has been gathered is then held in tension: transcription, cross-referenced inventory, analysis of recurring patterns. From the raw material emerge sensitive portraits of forebears — rebuilt through their objects, their gestures, their accounts — and the levers of transmission particular to each family, those that repeat from one generation to the next without anyone having noticed.",
+      transmettre: "The method is published as a book and the protocol released open-source: nine downloadable tools, made to be taken up as they are by other families, beyond the circle they came from. Because a gathering method is only worth something if it can be inherited in turn.",
+      outilsRecolter: ['Ethics charter', 'Angle sheet', 'Field notebook', 'Interview guide', 'Family mapping'],
+      outilsTraduire: ['Transcription grid', 'Inventory table', 'Pattern analysis grid'],
+      outilsTransmettre: ['Restitution decision tree'],
+    },
+    'petit-poucet': {
+      titre: 'Petit Poucet',
+      categorie: 'Governance system & urban agriculture',
+      contexte: "A system linking neighbouring nurseries through barter, developed for a City of Paris call for projects. The roof of a building overlooking the elevated metro at Stalingrad — private access imposed, a culture-centred programme — is only its support: the real subject is the system it allows to hold together.",
+      recolter: "Mapping the neighbourhood: a survey of the existing community gardens, including one started a few years earlier further down the boulevard, and of the site's constraints (private access, cultural programme imposed by the City).",
+      traduire: "This mapping brought out a principle of governance rather than a development plan: self-management by a committee of residents registered with an association, votes on what to plant and on admitting new resident-gardeners, exchange of seeds and soil between roofs through barter rather than purchase.",
+      transmettre: "A supporting architecture was proposed to make the system possible — greenhouse, growing beds, committee room — but the surplus produce given to the town hall and the training of civic-service volunteers matter just as much as the space: the central deliverable remains the governance protocol, reproducible on other roofs.",
+    },
+    'vent-du-changement': {
+      titre: 'The Wind of Change',
+      categorie: 'Scenography & mediation · Théâtre de la ville de Sèvres',
+      contexte: "Scenography and general signage for a festival on the theme of a post-apocalyptic world, on a minimal budget, supervised by Atelier CRAFT (a Paris scenography studio) — for a festival with pay-what-you-want entry.",
+      recolter: "The festival's premise: entry left to donation. The subject was therefore not a set, but a question — how to make visible what a donation represents, so that the audience feels its real weight rather than an abstract gesture.",
+      traduire: "The whole project rested on that translation: giving symbolic and mechanical form to a monetary gift. An interactive collection box converts each donation into a ball, released into a system of mills that fire in series — the financial gesture becomes physical, visible, multiplied.",
+      transmettre: "The device turns each donation into a mechanical sequence. A ball travels a network of rails before driving three windmills, making perceptible the way an individual gesture sets a collective system in motion.",
+    },
+  };
+
+  enseignementEN = [
+    { titre: 'Sensitive Space', meta: 'Year 3 · Strate École de Design · 2025, 2026',
+      texte: "The relation between space and lived emotion. Through single-material model-making, students build a neighbourhood where each use corresponds to an emotion, and each emotion to a form of space." },
+    { titre: 'In Situ', meta: 'Master 1 · Strate École de Design · 2026, 2027',
+      texte: "Field research, through the sensitive and the objective: contextual watch, building survey tools, then programming a site from a question the students identify themselves." },
+    { titre: 'Thesis supervision', meta: 'Master 2 · Strate École de Design · since 2023', texte: '' },
+  ];
+
+  competencesEN = [
+    { bracketed: '( Gathering )', items: ['Field research', 'Sensitive approach', 'Interviews', 'Contextual watch'] },
+    { bracketed: '{ Translating }', items: ['Systemic organisation', 'User journeys', 'Spatial representation', 'Strategic positioning', 'Project narrative', 'Curation'] },
+    { bracketed: '[ Passing on ]', items: ['Programming uses in space', 'Co-creation & workshops', 'Mediation', 'Artefact production', 'User-side project support', 'Guidance'] },
+  ];
+
+  sponsorsEN = ['public institutions', 'local authorities', 'foundations & cultural organisations', 'companies & private clients', 'families & individuals'];
+
+  componentDidMount() {
+    fetch('public/documents/kit-recoltes.zip', { method: 'HEAD' })
+      .then(r => this.setState({ kitReady: r.ok }))
+      .catch(() => this.setState({ kitReady: false }));
+    this.primeVideo();
+    this.setupReveal();
+    this.setupHover();
+    this.onScroll = () => {
+      const rail = document.querySelector('[data-rail-dot]');
+      if (!rail) return;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      rail.style.top = 'calc(' + (pct * 100) + '% - ' + (pct * 7) + 'px)';
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentDidUpdate() { this.setupReveal(); this.setupHover(); this.primeVideo(); if (this.onScroll) this.onScroll(); }
+
+  // React renders muted="" as a string attribute, which some browsers treat as
+  // unset — without this the autoplay policy blocks playback.
+  primeVideo() {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('video[autoplay]').forEach(v => {
+        v.muted = true; v.defaultMuted = true; v.loop = true;
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      });
+    });
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+  }
+
+  setupHover() {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('[data-group]').forEach(g => {
+        if (g.__hoverInit) return;
+        g.__hoverInit = true;
+        const targets = Array.prototype.slice.call(g.querySelectorAll('[data-hover-style]'));
+        if (!targets.length) return;
+        targets.forEach(t => { t.__base = t.getAttribute('style') || ''; });
+        g.addEventListener('mouseenter', () => targets.forEach(t => t.setAttribute('style', t.__base + ';' + t.getAttribute('data-hover-style'))));
+        g.addEventListener('mouseleave', () => targets.forEach(t => t.setAttribute('style', t.__base)));
+      });
+    });
+  }
+
+  setupReveal() {
+    if (this.props.reveal === false) return;
+    const dist = this.props.revealDistance ?? 16;
+    const dur = this.props.revealDuration ?? 900;
+    const stagger = this.props.revealStagger ?? 90;
+    if (!this.io) {
+      this.io = new IntersectionObserver((entries) => {
+        entries.filter(e => e.isIntersecting).forEach((e, i) => {
+          const el = e.target;
+          this.io.unobserve(el);
+          const d = (parseFloat(el.getAttribute('data-reveal-delay')) || 0) + i * stagger;
+          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d);
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.04 });
+    }
+    requestAnimationFrame(() => {
+      document.querySelectorAll('[data-reveal]').forEach(el => {
+        if (el.__revealInit) {
+          if (el.style.opacity === '0') this.io.observe(el);
+          return;
+        }
+        el.__revealInit = true;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(' + dist + 'px)';
+        el.style.transition = 'opacity ' + dur + 'ms cubic-bezier(.22,.61,.36,1), transform ' + dur + 'ms cubic-bezier(.22,.61,.36,1)';
+        el.style.willChange = 'opacity, transform';
+        this.io.observe(el);
+      });
+    });
+  }
+
+  go(page, index) {
+    this.setState({ visible: false });
+    setTimeout(() => {
+      this.setState({ page, projectIndex: page === 'fiche' ? (index ?? 0) : this.state.projectIndex, carnetIndex: page === 'ficheCarnet' ? (index ?? 0) : this.state.carnetIndex, visible: true });
+      window.scrollTo(0, 0);
+    }, 200);
+  }
+
+  enterSite = () => {
+    this.setState({ visible: false, entered: true });
+    setTimeout(() => { this.setState({ visible: true }); window.scrollTo(0, 0); }, 200);
+  };
+
+
+
+  renderVals() {
+    const { page, projectIndex, carnetIndex, visible, lang } = this.state;
+    const t = this.ui[lang] || this.ui.fr;
+    const data = lang === 'en'
+      ? this.projectsData.map(p => ({ ...p, ...(this.projectsEN[p.slug] || {}) }))
+      : this.projectsData;
+
+    const navItems = this.navKeys.map(n => ({
+      label: t[n.t],
+      onClick: () => this.go(n.key),
+      weight: page === n.key ? '600' : '400',
+      parenOpacity: page === n.key ? 1 : 0,
+    }));
+
+    const projects = data.map((p, i) => ({
+      titre: p.titre, categorie: p.categorie, annees: p.annees, index: i, slug: p.slug,
+      numero: String(i + 1).padStart(2, '0'),
+      legende: (p.categorie || '').trim().replace(/\s*\n+\s*/g, ' ') + ', ' + (p.annees || '').trim(),
+      photo: 'public/images/projets/projet-' + p.slug + '.webp',
+      onClick: () => this.go('fiche', i),
+    }));
+
+    const cp = data[projectIndex] || data[0];
+
+
+    return {
+      t, isFR: lang === 'fr', isEN: lang === 'en',
+      toggleLang: this.toggleLang,
+      frOpacity: lang === 'fr' ? 1 : 0.35,
+      enOpacity: lang === 'en' ? 1 : 0.35,
+      enterSite: this.enterSite,
+      showNav: this.state.entered,
+      showChrome: this.state.entered,
+      isHero: page === 'home' && !this.state.entered,
+      isHome: page === 'home' && this.state.entered,
+      isPratique: page === 'pratique',
+      isProjets: page === 'projets',
+      isFiche: page === 'fiche',
+      isApropos: page === 'apropos',
+      pageOpacity: visible ? 1 : 0,
+      pageShift: visible ? 'translateY(0)' : 'translateY(10px)',
+      navItems, projects,
+      fichePhotos: cp.sansPhoto ? [] : [{ src: 'public/images/projets/' + ({ veolia: 'proj-veolia-a' }[cp.slug] || 'proj-' + cp.slug + '-d') + '.webp', alt: cp.titre }],
+      currentProject: (() => {
+        const numbered = (arr, start) => (arr || []).map((nom, i) => ({ nom, num: String(start + i).padStart(2, '0') }));
+        const oR = numbered(cp.outilsRecolter, 1);
+        const oT = numbered(cp.outilsTraduire, oR.length + 1);
+        const oX = numbered(cp.outilsTransmettre, oR.length + oT.length + 1);
+        const detailFile = { veolia: 'proj-veolia-a' }[cp.slug] || 'proj-' + cp.slug + '-d';
+        return { ...cp, index: projectIndex, sousTitre: cp.annees + ' · ' + cp.categorie,
+          photo: 'public/images/projets/' + detailFile + '.webp',
+          hasLien: !!cp.lien, hasFichier: !!cp.fichier,
+          outilsRecolter: oR, outilsTraduire: oT, outilsTransmettre: oX,
+          hasOutilsRecolter: oR.length > 0, hasOutilsTraduire: oT.length > 0, hasOutilsTransmettre: oX.length > 0,
+          hasKit: !!cp.kit && this.state.kitReady !== false,
+          hasPhoto: !cp.sansPhoto,
+          photoBrute: !cp.sansPhoto && !!cp.photoBrute,
+          photoGradee: !cp.sansPhoto && !cp.photoBrute,
+          hasActions: !!cp.lien || !!cp.fichier || (!!cp.kit && this.state.kitReady !== false) };
+      })(),
+      goHome: () => this.go('home'),
+      goProjets: () => this.go('projets'),
+      enseignement: (lang === 'en' ? this.enseignementEN : [
+        { titre: 'Espace Sensible', meta: 'Licence 3 · Strate École de Design · 2025, 2026',
+          texte: "La relation entre espace et émotion vécue. Par un travail de maquettage en mono-matière, les étudiant·es construisent un quartier où chaque usage correspond à une émotion, et chaque émotion à une forme d'espace." },
+        { titre: 'In Situ', meta: 'Master 1 · Strate École de Design · 2026, 2027',
+          texte: "La recherche de terrain, par le sensible et l'objectif : veille, construction d'outils d'enquête, puis programmation d'un site à partir d'une problématique identifiée par les étudiant·es elles-mêmes." },
+        { titre: 'Suivi de diplôme', meta: 'Master 2 · Strate École de Design · depuis 2023', texte: '' },
+      ]).map(e => ({ ...e, texteMargin: e.texte ? '12px 0 0' : '0' })),
+      reconnaissance: [
+        'Jury de diplôme, Strate École de Design.',
+        'Présentation du projet Héritage(s), Institut Catholique de Paris.',
+      ],
+      competences: lang === 'en' ? this.competencesEN : [
+        { bracketed: '( Récolter )', items: ['Recherche terrain', 'Approche sensible', 'Interviews', 'Veille'] },
+        { bracketed: '{ Traduire }', items: ['Organisation systémique', 'Parcours utilisateurs', 'Représentation spatiale', 'Positionnement stratégique', 'Narration de projet', 'Curation'] },
+        { bracketed: '[ Transmettre ]', items: ["Programmation d'usages dans l'espace", 'Co-création & atelier', 'Médiation', "Production d'artéfact", 'AMU', 'Accompagnement'] },
+      ],
+      methodSteps: [
+        { bracketed: '( Récolter )', body: "Observer le terrain, écouter les récits, rassembler les usages, les mémoires et les données qui composent un sujet." },
+        { bracketed: '{ Traduire }', body: "Interpréter cette matière : en dégager les dynamiques, les tensions, les principes qui la structurent." },
+        { bracketed: '[ Transmettre ]', body: "Restituer une compréhension actionnable — récit, cartographie, principes de conception — pour guider la décision." },
+      ],
+      axes: [
+        {
+          numeral: 'I.',
+          title: 'Enrichir notre compréhension du monde',
+          body: "Observer les transformations de nos sociétés à travers les usages, les récits, les cultures et les relations qui façonnent les lieux de vie, tout autant que les lieux façonnent celles et ceux qui les habitent. Documenter ces réalités, archiver ce qui pourrait disparaître et révéler les empreintes qui témoignent d'une époque.",
+          tags: '. Films documentaires . Archives . Publications . Carnets de recherche . Profils usagers .',
+          missions: [
+            { title: 'Recherche de terrain', body: 'Enquêtes qualitatives, observations, entretiens, cartographies, analyses.' },
+            { title: 'Transmission', body: 'Films, publications, expositions, conférences, dispositifs de médiation.' },
+          ],
+        },
+        {
+          numeral: 'II.',
+          title: 'Nourrir la conception des projets spatiaux',
+          body: 'Accompagner les architectes, designers, collectivités, institutions et organisations dans la compréhension des contextes humains, vivants, sociaux et culturels qui fondent leurs décisions.',
+          tags: ". Programmation d'usages . Assistance à la maîtrise d'usage . Stratégies . Récits de projet . Conseils en démarches de conception .",
+          missions: [
+            { title: 'Recherche appliquée', body: 'Études préalables, AMU, programmation, accompagnement des équipes de conception.' },
+            { title: 'Stratégie culturelle', body: 'Positionnement, récit de projet, valorisation des patrimoines matériels et immatériels.' },
+          ],
+        },
+      ],
+      sponsors: lang === 'en' ? this.sponsorsEN : ['institutions publiques', 'collectivités', 'fondations & acteurs culturels', 'entreprises & commanditaires privés', 'familles & particuliers'],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
