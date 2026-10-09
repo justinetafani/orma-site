@@ -196,14 +196,16 @@
         <div style="font-family: 'Archivo',sans-serif; font-size: 28px; line-height: 1.4; letter-spacing: 0.05em; margin: 0; font-weight: 500"><h2 data-reveal="" style="transition: opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1); font-family: &quot;EB Garamond&quot;, Georgia, serif; letter-spacing: normal; font-weight: 500; font-size: clamp(26px, 2.8vw, 36px); margin: 0px 0px 20px; opacity: 1; transform: none; will-change: opacity, transform;">Une pratique située à la croisée de la <b>recherche</b>,<br>du <b>design</b> et de la <b>stratégie</b>.</h2></div>
         <div data-m="pstat" style="margin-top:34px;font-size:21px;text-align:justify;max-width:56ch">
           <p style="margin:0 0 22px">Un territoire, une organisation, une communauté ne se résument ni à leur forme, ni à leur géographie. <u>Ils se construisent par les relations qui les traversent</u>&nbsp;: les <u>usages</u> qui s'y inventent, les <u>histoires</u> qui s'y transmettent, les <u>cultures</u> qui s'y croisent, le <u>vivant</u> qui les habite.</p>
-          <p style="margin:0">Ces relations produisent des dynamiques invisibles. <br>Les comprendre est le préalable à toute conception juste.</p>
+          <p style="margin:0 0 22px">De ces relations naissent des <u>mémoires collectives</u>&nbsp;: ce qu'un lieu garde de celles et ceux qui l'ont habité, ce qui s'y raconte, ce qui s'y tait. ORMA en fait sa matière de travail&nbsp;: les récolter, les traduire, les transmettre.</p>
+          <p style="margin:0">Ces relations produisent des dynamiques visibles et invisibles. <br>Les comprendre est le préalable à toute conception juste.</p>
         </div>
         </sc-if>
         <sc-if value="{{ isEN }}">
         <p style="font-family: 'Archivo',sans-serif; font-size: 28px; line-height: 1.4; letter-spacing: 0.05em; margin: 0; font-weight: 500">ORMA works through a practice of <u>situated research.</u></p>
         <div data-m="pstat" style="margin-top:34px;font-size:21px;text-align:justify;max-width:56ch">
           <p style="margin:0 0 22px">A territory, an organisation, a community cannot be reduced to their form or their geography. <u>They are built by the relations that run through them</u>&nbsp;: the <u>uses</u> invented there, the <u>histories</u> passed on there, the <u>cultures</u> that meet there, the <u>living</u> that inhabit them.</p>
-          <p style="margin:0">These relations produce invisible dynamics. <br>Understanding them is the precondition for any sound design.</p>
+          <p style="margin:0 0 22px">From these relations come <u>collective memories</u>&nbsp;: what a place keeps of those who have lived in it, what is told there, what goes unsaid. ORMA makes them its working material&nbsp;: gathering them, translating them, passing them on.</p>
+          <p style="margin:0">These relations produce visible and invisible dynamics. <br>Understanding them is the precondition for any sound design.</p>
         </div>
         </sc-if><div data-m="c2" style="margin-top:52px;text-align:justify;font-size:17px;column-count:2;column-gap:48px;color:#333333">
           
@@ -740,7 +742,7 @@ class Component extends DCLogic {
     { bracketed: '[ Passing on ]', items: ['Programming uses in space', 'Co-creation & workshops', 'Mediation', 'Artefact production', 'User-side project support', 'Guidance'] },
   ];
 
-  sponsorsEN = ['public institutions', 'local authorities', 'foundations & cultural organisations', 'companies & private clients', 'families & individuals'];
+  sponsorsEN = ['public institutions', 'local authorities', 'foundations & cultural organisations', 'companies & private clients', 'communities'];
 
   componentDidMount() {
     fetch('public/documents/kit-recoltes.zip', { method: 'HEAD' })
@@ -950,7 +952,7 @@ class Component extends DCLogic {
           ],
         },
       ],
-      sponsors: lang === 'en' ? this.sponsorsEN : ['institutions publiques', 'collectivités', 'fondations & acteurs culturels', 'entreprises & commanditaires privés', 'familles & particuliers'],
+      sponsors: lang === 'en' ? this.sponsorsEN : ['institutions publiques', 'collectivités', 'fondations & acteurs culturels', 'entreprises & commanditaires privés', 'communautés'],
     };
   }
 }
